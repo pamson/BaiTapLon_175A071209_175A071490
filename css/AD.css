@@ -1,90 +1,99 @@
-.pageHeader {
-    background-color: rgb(196, 134, 52);
-    height: 100px;
-}
-
-.pageHeader h1 {
-    font-size: 20px;
-    color: white;
-    float: left;
-    margin-top: 35px;
-    font-weight: bold;
-}
-
-.header_right {
-    float: right;
-    background-color: wheat;
-    color: rgb(20, 114, 75);
-    border-radius: 30px;
-    font-size: 16px;
-    width: 400px;
-    padding-top: 15px;
-    padding-left: 20px;
-    margin-top: 20px;
-}
-
-#pageHeader_lbUserFullName {
-    font-weight: bold;
-}
-
-#pageHeader_lbUserFullName::after {
-    content: "  |  ";
-}
-
-#pageHeader_lbRole {
-    font-weight: bold;
-}
-
-
-/*********** Footer **************/
-
-.pageFooter {
-    background-color: rgb(196, 134, 52);
-    display: flex;
-}
-
-.img {
-    color: white;
-}
-
-.img img {
-    width: 200px;
-    height: 110px;
-    margin-left: 60px;
-    margin-top: 10px;
-}
-
-.img p {
-    font-size: 16px;
-    font-weight: bold;
-    padding-left: 35px;
-}
-
-.Content {
-    padding-top: 45px;
-    color: white;
-    font-size: 21px;
-}
-
-#Social ul {
-    display: flex;
-    list-style-type: none;
-    margin: 55px;
-    padding-left: 100px;
-}
-
-#Social a {
-    display: inline-block;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background-color: white;
-    color: rgb(196, 134, 52);
-    text-align: center;
-    line-height: 44px;
-    margin-left: 20px;
-}
-
-#Social a:hover {
-    background-color: rgb(223, 204, 164);
-}
+    .pageHeader {
+        background-color: rgb(196, 134, 52);
+        height: 100px;
+    }
+    
+    .pageHeader h1 {
+        font-size: 20px;
+        color: white;
+        float: left;
+        margin-top: 35px;
+        font-weight: bold;
+    }
+    
+    .header_right {
+        float: right;
+        background-color: wheat;
+        color: rgb(20, 114, 75);
+        border-radius: 30px;
+        font-size: 16px;
+        width: 400px;
+        padding-top: 15px;
+        padding-left: 20px;
+        margin-top: 20px;
+        position: relative;
+    }
+    
+    #pageHeader_lbUserFullName {
+        font-weight: bold;
+    }
+    
+    #pageHeader_lbUserFullName::after {
+        content: "  |  ";
+    }
+    
+    #pageHeader_lbRole {
+        font-weight: bold;
+    }
+    /*********** Main   **************/
+    /*********** Footer **************/
+    
+    .pageFooter {
+        background-color: rgb(196, 134, 52);
+        display: flex;
+    }
+    
+    .img {
+        color: white;
+    }
+    
+    .img img {
+        width: 200px;
+        height: 110px;
+        margin-left: 60px;
+        margin-top: 10px;
+    }
+    
+    .img p {
+        font-size: 16px;
+        font-weight: bold;
+        padding-left: 35px;
+    }
+    
+    .Content {
+        padding-top: 45px;
+        color: white;
+        font-size: 21px;
+    }
+    
+    #Social ul {
+        display: flex;
+        list-style-type: none;
+        margin: 55px;
+        padding-left: 100px;
+    }
+    
+    #Social a {
+        display: inline-block;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background-color: white;
+        color: rgb(196, 134, 52);
+        text-align: center;
+        line-height: 44px;
+        margin-left: 20px;
+    }
+    
+    #Social a:hover {
+        background-color: rgb(223, 204, 164);
+    }
+    
+    .nav_login {
+        display: none;
+        position: absolute;
+    }
+    
+    #pageHeader_lbUserFullName:hover~.nav_login {
+        display: inline-block;
+    }
