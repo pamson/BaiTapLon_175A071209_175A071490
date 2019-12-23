@@ -88,12 +88,18 @@
     #Social a:hover {
         background-color: rgb(223, 204, 164);
     }
+    /****************** Menu *************/
     
     .nav_login {
         display: none;
         position: absolute;
+        background-color: wheat;
     }
     
     #pageHeader_lbUserFullName:hover~.nav_login {
-        display: inline-block;
+        display: block;
+    }
+    
+    .header_right {
+        position: relative;
     }
