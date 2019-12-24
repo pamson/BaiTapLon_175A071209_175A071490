@@ -5,7 +5,7 @@ if(isset($_SESSION['lv'])){
         header("location:quanly.php");
     }
     else{
-        header("location:admin.php");
+        header("location:TrangSauDangNhap/admin.php");
     }
 }
 ?>
