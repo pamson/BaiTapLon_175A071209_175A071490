@@ -4,7 +4,7 @@ session_start();
 	$username=$_POST['username'];
 	$password=$_POST['password'];
 	include 'connect.php';
-	$sql="SELECT * FROM  account  WHERE UserName = '$username'";
+	$sql="SELECT * FROM  UserLogin  WHERE UserName = '$username'";
 	$result=mysqli_query($connect,$sql);
 		if(mysqli_num_rows($result)>0)
 		{
