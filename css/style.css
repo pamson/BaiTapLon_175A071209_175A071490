@@ -4,5 +4,6 @@ img{margin-left: 90px;}
 .carousel{position: relative;right: 45px;}
 main img{position: relative;right: 50px;}
 .page{margin-top: 50px;background-color: antiquewhite;}
-.logo{width: 100%;height: auto;background-color: blue;}
+a{color: blue;}
+
 
