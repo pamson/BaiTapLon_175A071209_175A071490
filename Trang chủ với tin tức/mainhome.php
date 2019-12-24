@@ -16,7 +16,7 @@
                      </div>
                         
               </div>
-                  <div class="col-sm-3"><img src="images/lichhoc.jpg" alt="">
+                  <div class="col-sm-3"><img src="../images/lichhoc.jpg" alt="">
                     <p>Lịch học ôn thi tuyển sinh ...</p>
                     <p>
                         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#contentId2" aria-expanded="false"
@@ -29,7 +29,7 @@
                         <a href="http://daotao.tlu.edu.vn/ftp/p3/Upload/Tuyensinh/2019/CaoHoc/Lich_On_thi_nam%202019.pdf" >Xem chi tiết lịch học</a>
                     </div>
                   </div>
-                  <div class="col-sm-3"><img src="images/sach.jpg" alt="">
+                  <div class="col-sm-3"><img src="../images/sach.jpg" alt="">
                     <p>Thông báo các môn thi tuyển sinh trong ...</p>
                     <p>
                         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#contentId1" aria-expanded="false"

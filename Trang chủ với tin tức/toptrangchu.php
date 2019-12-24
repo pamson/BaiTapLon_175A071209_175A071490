@@ -30,11 +30,11 @@
                           <a class="nav-link" href="#">Tin tức <span class="sr-only">(current)</span></a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="#"><img src="images/logoDaiHocThuyLoi.png" alt=""></a>
+                          <a class="nav-link" href="#"><img src="../images/logoDaiHocThuyLoi.png" alt=""></a>
                       </li>
                       
                   </ul>
-                  <form class="form-inline my-2 my-lg-0" action="dangnhap.php" >
+                  <form class="form-inline my-2 my-lg-0" action="../dangnhap.php" >
                      
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Đăng nhập</button>
                   </form>
@@ -50,13 +50,13 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img src="images/nhanco.png" alt="First slide">
+                            <img src="../images/nhanco.png" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img src="images/nhanco.png" alt="Second slide">
+                            <img src="../images/nhanco.png" alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                            <img src="images/dangbo1.png" alt="Third slide">
+                            <img src="../images/dangbo1.png" alt="Third slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
