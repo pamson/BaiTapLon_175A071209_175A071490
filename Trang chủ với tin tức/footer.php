@@ -5,7 +5,7 @@
 
                 <div class="col-sm-4">
                     <div class="img">
-                        <img src="images/logo_TLU.png" alt="logo">
+                        <img src="../images/logo_TLU.png" alt="logo">
                         <p>© 2019 - TRƯỜNG ĐẠI HỌC THỦY LỢI</p>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
           <div class="page">
               <h2>Tuyển sinh</h2>
               <div class="row">
-                  <div class="col-sm-3"><img src="images/lichthi.jpg" alt="">
+                  <div class="col-sm-3"><img src="../images/lichthi.jpg" alt="">
                     <p>Lịch thi tuyến sinh đào tạo trình độ ...</p>
                      <p>
                          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#contentId" aria-expanded="false"
