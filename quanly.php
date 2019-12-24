@@ -35,7 +35,7 @@ session_start();
         <div class="container-fluid pageHeader">
             <h1>HỆ THỐNG ĐĂNG KÍ HỌC - TRƯỜNG ĐẠI HỌC THỦY LỢI</h1>
             <div id="pageHeader_login" class="header_right">
-                <span id="pageHeader_lbUserFullName"><?php echo $_SESSION['name'] ?></span>
+                <span id="pageHeader_lbUserFullName">Chào <?php echo $_SESSION['name'] ?></span>
                 <span id="pageHeader_lbRoleTitle">Vai trò: </span>
                 <span id="pageHeader_lbRole"><?php echo $_SESSION['lv'] ?></span>
                 <ul class="nav justify-content-end nav_login">
