@@ -14,14 +14,14 @@
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/all.min.css">
   <link href="../css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/Admin.css">
+  <link rel="stylesheet" href="../css/admin.css">
 </head>
 
 <body class="dark-edition">
     <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-2">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="../images/sidebar-2.jpg">
-      <div class="logo">TRƯỜNG ĐẠI HỌC THỦY LỢI</div>
+      <div class="logo">Xin chào Phạm Thế Sơn</div>
       <div class="sidebar-wrapper">
         <ul class="nav">
         <a class="nav-link active" href="#!"><i class="fas fa-home"></i>    Trang chủ</a>
@@ -38,26 +38,17 @@
       </div>
     </div>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-10 page_right">
     <header>
         <div class="container-fluid pageHeader">
             <h1>HỆ THỐNG ĐĂNG KÍ HỌC - TRƯỜNG ĐẠI HỌC THỦY LỢI</h1>
-            <div id="pageHeader_login" class="header_right">
-                <span id="pageHeader_lbUserFullName">Phạm Thế Sơn(175A071209)</span>
-                <span id="pageHeader_lbRoleTitle">Vai trò: </span>
-                <span id="pageHeader_lbRole">Sinh viên</span>
-                <ul class="nav justify-content-end nav_login">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Trang chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Thoát</a>
-                    </li>
-                </ul>
-
-            </div>
         </div>
     </header>
+    <main>
+        <div class="container-fluid main_page">
+            <h1>fsdf</h1>
+        </div>
+    </main>
     <footer>
         <div class="container-fluid  pageFooter">
 
