@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 26, 2019 lúc 08:41 AM
+-- Thời gian đã tạo: Th12 26, 2019 lúc 05:50 PM
 -- Phiên bản máy phục vụ: 10.4.6-MariaDB
 -- Phiên bản PHP: 7.3.8
 
@@ -41,6 +41,7 @@ CREATE TABLE `account` (
   `UserName` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `PassWord` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ConfirmPassword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'xác nhập lại password',
+  `verified` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Sex` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Role` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Cấp bậc',
@@ -52,21 +53,10 @@ CREATE TABLE `account` (
 -- Đang đổ dữ liệu cho bảng `account`
 --
 
-INSERT INTO `account` (`UserName`, `PassWord`, `ConfirmPassword`, `Name`, `Sex`, `Role`, `Email`, `Address`) VALUES
-('175A071209', '175A071204', '175A071204', 'Phạm Thế Sơn', 'Nam', 'SV', 'Pamson@gmail.com', 'Nam Định'),
-('175A071490', '175A071490', '175A071490', 'Đỗ Cảnh Dương', 'Nam', 'SV', 'DuongDo@gmail.com', 'Nam Định');
-
---
--- Bẫy `account`
---
-DELIMITER $$
-CREATE TRIGGER `Insert_Account` AFTER INSERT ON `account` FOR EACH ROW INSERT INTO userlogin VALUES(NEW.UserName,NEW.PassWord,NEW.Role)
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `Update_Account` AFTER UPDATE ON `account` FOR EACH ROW UPDATE userlogin SET PassWord = NEW.PassWord , Role = NEW.Role
-$$
-DELIMITER ;
+INSERT INTO `account` (`UserName`, `PassWord`, `ConfirmPassword`, `verified`, `Name`, `Sex`, `Role`, `Email`, `Address`) VALUES
+('175A071209', '175A071204', '175A071204', NULL, 'Phạm Thế Sơn', 'Nam', 'SV', 'Pamson@gmail.com', 'Nam Định'),
+('175A071490', '175A071490', '175A071490', NULL, 'Đỗ Cảnh Dương', 'Nam', 'SV', 'DuongDo@gmail.com', 'Nam Định'),
+('ADMIN', '1', '1', NULL, 'Phạm Thế Sơn', 'Nam', 'ADMIN', 'PamSon@gmail.com', 'Nam Định');
 
 -- --------------------------------------------------------
 
@@ -76,18 +66,9 @@ DELIMITER ;
 
 CREATE TABLE `ctmonhoc` (
   `MaLop` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `MaGV` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `MaMH` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `HK` tinyint(4) NOT NULL COMMENT 'Học Kì'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `ctmonhoc`
---
-
-INSERT INTO `ctmonhoc` (`MaLop`, `MaGV`, `MaMH`, `HK`) VALUES
-('59TH2', 'KTDung', 'CSE450', 2),
-('59TH2', 'KTDung', 'CSE488', 1);
 
 -- --------------------------------------------------------
 
@@ -225,6 +206,17 @@ INSERT INTO `monhoc` (`MaMH`, `TenMH`, `SoTC`, `LT`, `TH`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `phancong_gv_lop`
+--
+
+CREATE TABLE `phancong_gv_lop` (
+  `MaLop` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `MaGV` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `sinhvien`
 --
 
@@ -262,26 +254,6 @@ CREATE TRIGGER `Update_SV` AFTER UPDATE ON `sinhvien` FOR EACH ROW UPDATE accoun
 Address = NEW.DiaChi
 $$
 DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `userlogin`
---
-
-CREATE TABLE `userlogin` (
-  `UserName` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `PassWord` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Role` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Phân quyền'
-) ;
-
---
--- Đang đổ dữ liệu cho bảng `userlogin`
---
-
-INSERT INTO `userlogin` (`UserName`, `PassWord`, `Role`) VALUES
-('175A071209', '175A071204', 'SV'),
-('175A071490', '175A071490', 'SV');
 
 -- --------------------------------------------------------
 
@@ -326,9 +298,8 @@ ALTER TABLE `account`
 -- Chỉ mục cho bảng `ctmonhoc`
 --
 ALTER TABLE `ctmonhoc`
-  ADD PRIMARY KEY (`MaLop`,`MaGV`,`MaMH`),
-  ADD KEY `MaMH` (`MaMH`),
-  ADD KEY `MaGV` (`MaGV`);
+  ADD PRIMARY KEY (`MaLop`,`MaMH`) USING BTREE,
+  ADD KEY `MaMH` (`MaMH`);
 
 --
 -- Chỉ mục cho bảng `diemsv`
@@ -366,18 +337,19 @@ ALTER TABLE `monhoc`
   ADD UNIQUE KEY `Check_uni` (`TenMH`);
 
 --
+-- Chỉ mục cho bảng `phancong_gv_lop`
+--
+ALTER TABLE `phancong_gv_lop`
+  ADD PRIMARY KEY (`MaLop`,`MaGV`),
+  ADD KEY `MaGV` (`MaGV`);
+
+--
 -- Chỉ mục cho bảng `sinhvien`
 --
 ALTER TABLE `sinhvien`
   ADD PRIMARY KEY (`MaSV`),
   ADD KEY `MaSV` (`MaSV`),
   ADD KEY `MaLop` (`MaLop`);
-
---
--- Chỉ mục cho bảng `userlogin`
---
-ALTER TABLE `userlogin`
-  ADD PRIMARY KEY (`UserName`);
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -388,8 +360,7 @@ ALTER TABLE `userlogin`
 --
 ALTER TABLE `ctmonhoc`
   ADD CONSTRAINT `ctmonhoc_ibfk_1` FOREIGN KEY (`MaMH`) REFERENCES `monhoc` (`MaMH`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ctmonhoc_ibfk_2` FOREIGN KEY (`MaLop`) REFERENCES `lop` (`MaLop`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ctmonhoc_ibfk_3` FOREIGN KEY (`MaGV`) REFERENCES `giangvien` (`MaGV`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `ctmonhoc_ibfk_2` FOREIGN KEY (`MaLop`) REFERENCES `lop` (`MaLop`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `diemsv`
@@ -405,16 +376,17 @@ ALTER TABLE `lop`
   ADD CONSTRAINT `lop_ibfk_1` FOREIGN KEY (`MaKhoa`) REFERENCES `khoa` (`MaKhoa`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Các ràng buộc cho bảng `phancong_gv_lop`
+--
+ALTER TABLE `phancong_gv_lop`
+  ADD CONSTRAINT `phancong_gv_lop_ibfk_1` FOREIGN KEY (`MaLop`) REFERENCES `lop` (`MaLop`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `phancong_gv_lop_ibfk_2` FOREIGN KEY (`MaGV`) REFERENCES `giangvien` (`MaGV`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Các ràng buộc cho bảng `sinhvien`
 --
 ALTER TABLE `sinhvien`
   ADD CONSTRAINT `sinhvien_ibfk_1` FOREIGN KEY (`MaLop`) REFERENCES `lop` (`MaLop`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Các ràng buộc cho bảng `userlogin`
---
-ALTER TABLE `userlogin`
-  ADD CONSTRAINT `userlogin_ibfk_1` FOREIGN KEY (`UserName`) REFERENCES `account` (`UserName`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

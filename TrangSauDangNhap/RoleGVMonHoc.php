@@ -7,60 +7,45 @@ include ("leftBody.php");
 <div class="sidebar-wrapper">
         <ul class="nav menu">
                     <li class="nav-item   ">
-                        <a class="nav-link" href="admin.php">
+                        <a class="nav-link" href="RoleGiangVien.php">
                         <i class="fas fa-home"></i>
                             <p>Trang chủ</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="Khoa.php">
-                        <i class="fas fa-university"></i>
-                            <p>Khoa</p>
-                        </a>
-                    </li>
+                    
                     <li class="nav-item ">
-                        <a class="nav-link" href="Lop.php">
+                        <a class="nav-link" href="RoleGVLop.php">
                         <i class="fas fa-store-alt"></i>
                             <p>Lớp</p>
                         </a>
                     </li>
+                    
                     <li class="nav-item ">
-                        <a class="nav-link" href="GiangVien.php">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                            <p>Giảng viên</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="SinhVien.php">
+                        <a class="nav-link" href="RoleGVSinhVien.php">
                         <i class="fas fa-graduation-cap"></i>
                             <p>Sinh viên</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="MonHoc.php">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="RoleGVMonHoc.php">
                         <i class="fas fa-book"></i>
                             <p>Môn học</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="ChiTietMH.php">
+                        <a class="nav-link" href="RoleGVChiTietMH.php">
                         <i class="fas fa-book-open"></i>
-                            <p>Phân công giảng dạy</p>
+                            <p>Chi tiết môn học</p>
                         </a>
                     </li>
 
                     <li class="nav-item ">
-                        <a class="nav-link" href="DiemSV.php">
+                        <a class="nav-link" href="RoleGVDiemSV.php">
                         <i class="fas fa-table"></i>
                             <p>Điểm sinh viên</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="account.php">
-                        <i class="fas fa-users"></i>
-                            <p>Thông tin tài khoản</p>
-                        </a>
-                    </li>
+                    
                     
         </ul>
 	  </div>
@@ -80,9 +65,11 @@ include ("leftBody.php");
 						<thead>
 							<tr class="table100-head">
 								<th class="column1">STT</th>
-								<th class="column2">Mã khoa</th>
-								<th class="column3">Tên khoa</th>
-								
+								<th class="column2">Mã môn học</th>
+								<th class="column3">Tên môn học</th>
+								<th class="column4">Số tín chỉ</th>
+								<th class="column5">Lý thuyết</th>
+								<th class="column6">Thực hành</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -90,9 +77,11 @@ include ("leftBody.php");
 									<td class="column1"></td>
 									<td class="column2"></td>
 									<td class="column3"></td>
-									
+									<td class="column4"></td>
+									<td class="column5"></td>
+									<td class="column6"></td>
                                 </tr>	
-											
+                                					
 						</tbody>
 					</table>
 				</div>

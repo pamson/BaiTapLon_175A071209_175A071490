@@ -12,7 +12,7 @@ include ("leftBody.php");
                             <p>Trang chủ</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="Khoa.php">
                         <i class="fas fa-university"></i>
                             <p>Khoa</p>
@@ -55,7 +55,7 @@ include ("leftBody.php");
                             <p>Điểm sinh viên</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item active">
                         <a class="nav-link" href="account.php">
                         <i class="fas fa-users"></i>
                             <p>Thông tin tài khoản</p>
@@ -79,20 +79,35 @@ include ("leftBody.php");
 					<table>
 						<thead>
 							<tr class="table100-head">
-								<th class="column1">STT</th>
-								<th class="column2">Mã khoa</th>
-								<th class="column3">Tên khoa</th>
+								<th class="Diem1">STT</th>
+								<th class="Diem2">Username</th>
+								<th class="Diem3">Password</th>
+								<th class="Diem4">Confirm Password</th>
+                                <th class="Diem5">Verified</th>
+                                <th class="Diem6">Name</th>
+                                <th class="Use7">Sex</th>
+                                <th class="Diem8">Role</th>
+                                <th class="Diem9">Email</th>
+                                <th class="Diem10">Address</th>
+                                
 								
 							</tr>
 						</thead>
 						<tbody>
 								<tr>
-									<td class="column1"></td>
-									<td class="column2"></td>
-									<td class="column3"></td>
-									
+									<td class="Diem1"></td>
+									<td class="Diem2"></td>
+									<td class="Diem3"></td>
+									<td class="Diem4"></td>
+									<td class="Diem5"></td>
+                                    <td class="Diem6"></td>
+                                    <td class="Use7"></td>
+									<td class="Diem8"></td>
+									<td class="Diem9"></td>
+                                    <td class="Diem10"></td>
+                                    
                                 </tr>	
-											
+                                					
 						</tbody>
 					</table>
 				</div>

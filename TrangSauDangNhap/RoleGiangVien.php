@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,15 +17,16 @@
   <link rel="stylesheet" href="../css/all.min.css">
   <link href="../css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
   <link rel="stylesheet" href="../css/admin.css">
+  <!--Css phan trang chủ-->
+  <link rel="stylesheet" type="text/css" href="../css/util.css">
+  <link rel="stylesheet" type="text/css" href="../css/k.css">
 </head>
 
 <body class="dark-edition">
     <div class="row">
     <div class="col-sm-2">
-
     <div class="sidebar" data-color="purple" data-background-color="black" >
         <div class="logo"><span>Xin chào! Phạm Thế Sơn</span>
-
             <div class="nav_user">
             <nav class="nav flex-column ">
                 <a class="nav-link active" href="#!"><i class="fas fa-home"></i>Trang chủ</a>
@@ -38,61 +38,42 @@
       <div class="sidebar-wrapper">
         <ul class="nav menu">
                     <li class="nav-item active  ">
-                        <a class="nav-link" href="admin.php">
+                        <a class="nav-link" href="RoleGiangVien.php">
                         <i class="fas fa-home"></i>
                             <p>Trang chủ</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="Khoa.php">
-                        <i class="fas fa-university"></i>
-                            <p>Khoa</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="Lop.php">
+                        <a class="nav-link" href="RoleGVLop.php">
                         <i class="fas fa-store-alt"></i>
                             <p>Lớp</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="GiangVien.php">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                            <p>Giảng viên</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="SinhVien.php">
+                        <a class="nav-link" href="RoleGVSinhVien.php">
                         <i class="fas fa-graduation-cap"></i>
                             <p>Sinh viên</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="MonHoc.php">
+                        <a class="nav-link" href="RoleGVMonHoc.php">
                         <i class="fas fa-book"></i>
                             <p>Môn học</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="ChiTietMH.php">
+                        <a class="nav-link" href="RoleGVChiTietMH.php">
                         <i class="fas fa-book-open"></i>
-                            <p>Phân công giảng dạy</p>
+                            <p>Chi tiết môn học</p>
                         </a>
                     </li>
-
                     <li class="nav-item ">
-                        <a class="nav-link" href="DiemSV.php">
+                        <a class="nav-link" href="RoleGVRoleSVDiem.php">
                         <i class="fas fa-table"></i>
                             <p>Điểm sinh viên</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="account.php">
-                        <i class="fas fa-users"></i>
-                            <p>Thông tin tài khoản</p>
-                        </a>
-                    </li>
-                    
+                  
         </ul>
       </div>
     </div>

@@ -7,60 +7,45 @@ include ("leftBody.php");
 <div class="sidebar-wrapper">
         <ul class="nav menu">
                     <li class="nav-item   ">
-                        <a class="nav-link" href="admin.php">
+                        <a class="nav-link" href="RoleGiangVien.php">
                         <i class="fas fa-home"></i>
                             <p>Trang chủ</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="Khoa.php">
-                        <i class="fas fa-university"></i>
-                            <p>Khoa</p>
-                        </a>
-                    </li>
+                    
                     <li class="nav-item ">
-                        <a class="nav-link" href="Lop.php">
+                        <a class="nav-link" href="RoleGVLop.php">
                         <i class="fas fa-store-alt"></i>
                             <p>Lớp</p>
                         </a>
                     </li>
+                    
                     <li class="nav-item ">
-                        <a class="nav-link" href="GiangVien.php">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                            <p>Giảng viên</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="SinhVien.php">
+                        <a class="nav-link" href="RoleGVSinhVien.php">
                         <i class="fas fa-graduation-cap"></i>
                             <p>Sinh viên</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="MonHoc.php">
+                        <a class="nav-link" href="RoleGVMonHoc.php">
                         <i class="fas fa-book"></i>
                             <p>Môn học</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="ChiTietMH.php">
+                        <a class="nav-link" href="RoleGVChiTietMH.php">
                         <i class="fas fa-book-open"></i>
-                            <p>Phân công giảng dạy</p>
+                            <p>Chi tiết môn học</p>
                         </a>
                     </li>
 
-                    <li class="nav-item ">
-                        <a class="nav-link" href="DiemSV.php">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="RoleGVDiemSV.php">
                         <i class="fas fa-table"></i>
                             <p>Điểm sinh viên</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="account.php">
-                        <i class="fas fa-users"></i>
-                            <p>Thông tin tài khoản</p>
-                        </a>
-                    </li>
+                    
                     
         </ul>
 	  </div>
@@ -79,20 +64,37 @@ include ("leftBody.php");
 					<table>
 						<thead>
 							<tr class="table100-head">
-								<th class="column1">STT</th>
-								<th class="column2">Mã khoa</th>
-								<th class="column3">Tên khoa</th>
+								<th class="Diem1">STT</th>
+								<th class="Diem2">Mã môn học</th>
+								<th class="Diem3">Tên môn học</th>
+								<th class="Diem4">Số tín chỉ</th>
+                                <th class="Diem5">Lần thi</th>
+                                <th class="Diem6">Đánh giá</th>
+                                <th class="Diem7">Tên sinh viên</th>
+                                <th class="Diem8">Mã sinh viên</th>
+                                <th class="Diem9">Điểm quá trình</th>
+                                <th class="Diem10">Điểm thi</th>
+                                <th class="Diem11">TKHP</th>
+                                <th class="Diem12">Điểm chữ</th>
 								
 							</tr>
 						</thead>
 						<tbody>
 								<tr>
-									<td class="column1"></td>
-									<td class="column2"></td>
-									<td class="column3"></td>
-									
+									<td class="Diem1"></td>
+									<td class="Diem2"></td>
+									<td class="Diem3"></td>
+									<td class="Diem4"></td>
+									<td class="Diem5"></td>
+                                    <td class="Diem6"></td>
+                                    <td class="Diem7"></td>
+									<td class="Diem8"></td>
+									<td class="Diem9"></td>
+                                    <td class="Diem10"></td>
+                                    <td class="Diem11"></td>
+									<td class="Diem12"></td>
                                 </tr>	
-											
+                                					
 						</tbody>
 					</table>
 				</div>
