@@ -13,35 +13,16 @@
 </head>
 
 <body>
-  <div class="container-fluid">
-      <div class="header">
-          <nav class="navbar navbar-expand-sm navbar-light bg-light">
-              
-              <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-                  aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="collapsibleNavId">
-                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                                <a class="nav-link" href="#collapsibleNavId">Trang chủ <span class="sr-only">(current)</span></a>
-                         </li>
-                      <li class="nav-item active">
-                          <a class="nav-link" href="#">Tin tức <span class="sr-only">(current)</span></a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#"><img src="../images/logoDaiHocThuyLoi.png" alt=""></a>
-                      </li>
-                      
-                  </ul>
-                  <form class="form-inline my-2 my-lg-0" action="../dangnhap.php" >
+<header>
+    <div id="logo"><img src="../images/logoDaiHocThuyLoi.png" alt=""></div>
+    <div class="form">
+    <form class="form-inline my-2 my-lg-0" action="../dangnhap.php" >
                      
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Đăng nhập</button>
-                  </form>
-              </div>
-          </nav>
-      </div>
-      <div class="logo" >
+                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Đăng nhập</button>
+                 </form>
+    </div>
+</header>
+<div class="logo" >
             <div id="carouselId" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselId" data-slide-to="0" class="active"></li>
@@ -50,7 +31,7 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img src="../images/nhanco.png" alt="First slide">
+                            <img src="../images/tet2020.png" alt="First slide">
                         </div>
                         <div class="carousel-item">
                             <img src="../images/nhanco.png" alt="Second slide">
@@ -69,3 +50,36 @@
                     </a>
                 </div>
       </div>
+  <div class="container-fluid">
+      <div class="header">
+          <nav class="navbar navbar-expand-sm navbar-light bg-light">
+              
+              <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                  aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="collapsibleNavId">
+                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                              <a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#">Tuyển Sinh</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#">Liên hệ</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#">Đào tạo</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#">Đối Ngoại</a>
+                          </li>
+                          
+                      
+                  </ul>
+                  
+              </div>
+          </nav>
+      </div>
+      

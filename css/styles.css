@@ -3,7 +3,12 @@
     font-size: 20px;
     margin-left: 20px;
     font-weight: bold;
+    padding-left: 30px;
+    
 }
+.navbar{height: 70px;}
+
+
 
 img {
     margin-left: 90px;
@@ -16,17 +21,25 @@ img {
 
 .carousel {
     position: relative;
-    right: 45px;
+    
+    margin: 0px;
+    right: 55px;
 }
-
-main img {
+#img1 img{height: 350px;position: relative;right: 90px;width: 550px;}
+#img1 a{font-size: 20px;font-weight: bold;text-decoration: none;color: black;}
+#img img {
     position: relative;
-    right: 50px;
-}
+    right: 90px;
+    width: 320px;
+    height: 200px}
+header{display: flex;}
+ 
+.form{position: absolute;right: 10px;top: 30px;}
+#logo{position: relative;right: 30px;}
 
 .page {
     margin-top: 50px;
-    background-color: antiquewhite;
+    
 }
 
 a {
@@ -61,11 +74,13 @@ a {
 
 .pageFooter {
     display: flex;
+    background-color:#3482B2;
 }
 
 .img {
     color: black;
 }
+#img{margin-top: 30px; background-color:antiquewhite;}
 
 .img img {
     width: 200px;
@@ -79,7 +94,7 @@ a {
     font-weight: bold;
     padding-left: 35px;
 }
-
+#thongbao{position: relative;bottom: 50px;}
 .Content {
     padding-top: 45px;
     color: black;

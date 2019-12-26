@@ -1,3 +1,3 @@
 <?php 
-$connect = mysqli_connect('localhost', 'root', '', 'baitaplon_congngheweb') or die ('Không thể kết nối tới database');
+$connect = mysqli_connect('localhost', 'root', '', 'demo') or die ('Không thể kết nối tới database');
 ?>

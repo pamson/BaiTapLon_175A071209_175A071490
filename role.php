@@ -4,7 +4,7 @@ if(isset($_SESSION['lv'])){
     if($_SESSION['lv'] == 'SV'){
         header("location:quanly.php");
     }
-    else if($_SESSION['lv'] == 'ADMIN'){
+    else {
         header("location:TrangSauDangNhap/admin.php");
     }
 }
