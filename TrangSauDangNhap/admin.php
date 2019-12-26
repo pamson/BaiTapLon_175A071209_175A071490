@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,8 +23,10 @@
 <body class="dark-edition">
     <div class="row">
     <div class="col-sm-2">
+
     <div class="sidebar" data-color="purple" data-background-color="black" >
         <div class="logo"><span>Xin chào! Phạm Thế Sơn</span>
+
             <div class="nav_user">
             <nav class="nav flex-column ">
                 <a class="nav-link active" href="#!"><i class="fas fa-home"></i>Trang chủ</a>
