@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 26, 2019 lúc 08:41 AM
+-- Thời gian đã tạo: Th12 26, 2019 lúc 09:07 AM
 -- Phiên bản máy phục vụ: 10.4.6-MariaDB
 -- Phiên bản PHP: 7.3.8
 
@@ -54,19 +54,8 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`UserName`, `PassWord`, `ConfirmPassword`, `Name`, `Sex`, `Role`, `Email`, `Address`) VALUES
 ('175A071209', '175A071204', '175A071204', 'Phạm Thế Sơn', 'Nam', 'SV', 'Pamson@gmail.com', 'Nam Định'),
-('175A071490', '175A071490', '175A071490', 'Đỗ Cảnh Dương', 'Nam', 'SV', 'DuongDo@gmail.com', 'Nam Định');
-
---
--- Bẫy `account`
---
-DELIMITER $$
-CREATE TRIGGER `Insert_Account` AFTER INSERT ON `account` FOR EACH ROW INSERT INTO userlogin VALUES(NEW.UserName,NEW.PassWord,NEW.Role)
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `Update_Account` AFTER UPDATE ON `account` FOR EACH ROW UPDATE userlogin SET PassWord = NEW.PassWord , Role = NEW.Role
-$$
-DELIMITER ;
+('175A071490', '175A071490', '175A071490', 'Đỗ Cảnh Dương', 'Nam', 'SV', 'DuongDo@gmail.com', 'Nam Định'),
+('ADMIN', '1', '1', 'Phạm Thế Sơn', 'Nam', 'ADMIN', 'PamSon@gmail.com', 'Nam Định');
 
 -- --------------------------------------------------------
 
@@ -266,26 +255,6 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `userlogin`
---
-
-CREATE TABLE `userlogin` (
-  `UserName` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `PassWord` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Role` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Phân quyền'
-) ;
-
---
--- Đang đổ dữ liệu cho bảng `userlogin`
---
-
-INSERT INTO `userlogin` (`UserName`, `PassWord`, `Role`) VALUES
-('175A071209', '175A071204', 'SV'),
-('175A071490', '175A071490', 'SV');
-
--- --------------------------------------------------------
-
---
 -- Cấu trúc đóng vai cho view `v_diemsv`
 -- (See below for the actual view)
 --
@@ -374,12 +343,6 @@ ALTER TABLE `sinhvien`
   ADD KEY `MaLop` (`MaLop`);
 
 --
--- Chỉ mục cho bảng `userlogin`
---
-ALTER TABLE `userlogin`
-  ADD PRIMARY KEY (`UserName`);
-
---
 -- Các ràng buộc cho các bảng đã đổ
 --
 
@@ -409,12 +372,6 @@ ALTER TABLE `lop`
 --
 ALTER TABLE `sinhvien`
   ADD CONSTRAINT `sinhvien_ibfk_1` FOREIGN KEY (`MaLop`) REFERENCES `lop` (`MaLop`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Các ràng buộc cho bảng `userlogin`
---
-ALTER TABLE `userlogin`
-  ADD CONSTRAINT `userlogin_ibfk_1` FOREIGN KEY (`UserName`) REFERENCES `account` (`UserName`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
