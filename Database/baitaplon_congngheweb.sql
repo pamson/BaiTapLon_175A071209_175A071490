@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 26, 2019 lúc 03:26 PM
+-- Thời gian đã tạo: Th12 26, 2019 lúc 05:50 PM
 -- Phiên bản máy phục vụ: 10.4.6-MariaDB
 -- Phiên bản PHP: 7.3.8
 
@@ -66,18 +66,9 @@ INSERT INTO `account` (`UserName`, `PassWord`, `ConfirmPassword`, `verified`, `N
 
 CREATE TABLE `ctmonhoc` (
   `MaLop` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `MaGV` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `MaMH` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `HK` tinyint(4) NOT NULL COMMENT 'Học Kì'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `ctmonhoc`
---
-
-INSERT INTO `ctmonhoc` (`MaLop`, `MaGV`, `MaMH`, `HK`) VALUES
-('59TH2', 'KTDung', 'CSE450', 2),
-('59TH2', 'KTDung', 'CSE488', 1);
 
 -- --------------------------------------------------------
 
@@ -215,6 +206,17 @@ INSERT INTO `monhoc` (`MaMH`, `TenMH`, `SoTC`, `LT`, `TH`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `phancong_gv_lop`
+--
+
+CREATE TABLE `phancong_gv_lop` (
+  `MaLop` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `MaGV` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `sinhvien`
 --
 
@@ -296,9 +298,8 @@ ALTER TABLE `account`
 -- Chỉ mục cho bảng `ctmonhoc`
 --
 ALTER TABLE `ctmonhoc`
-  ADD PRIMARY KEY (`MaLop`,`MaGV`,`MaMH`),
-  ADD KEY `MaMH` (`MaMH`),
-  ADD KEY `MaGV` (`MaGV`);
+  ADD PRIMARY KEY (`MaLop`,`MaMH`) USING BTREE,
+  ADD KEY `MaMH` (`MaMH`);
 
 --
 -- Chỉ mục cho bảng `diemsv`
@@ -336,6 +337,13 @@ ALTER TABLE `monhoc`
   ADD UNIQUE KEY `Check_uni` (`TenMH`);
 
 --
+-- Chỉ mục cho bảng `phancong_gv_lop`
+--
+ALTER TABLE `phancong_gv_lop`
+  ADD PRIMARY KEY (`MaLop`,`MaGV`),
+  ADD KEY `MaGV` (`MaGV`);
+
+--
 -- Chỉ mục cho bảng `sinhvien`
 --
 ALTER TABLE `sinhvien`
@@ -352,8 +360,7 @@ ALTER TABLE `sinhvien`
 --
 ALTER TABLE `ctmonhoc`
   ADD CONSTRAINT `ctmonhoc_ibfk_1` FOREIGN KEY (`MaMH`) REFERENCES `monhoc` (`MaMH`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ctmonhoc_ibfk_2` FOREIGN KEY (`MaLop`) REFERENCES `lop` (`MaLop`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ctmonhoc_ibfk_3` FOREIGN KEY (`MaGV`) REFERENCES `giangvien` (`MaGV`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `ctmonhoc_ibfk_2` FOREIGN KEY (`MaLop`) REFERENCES `lop` (`MaLop`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `diemsv`
@@ -367,6 +374,13 @@ ALTER TABLE `diemsv`
 --
 ALTER TABLE `lop`
   ADD CONSTRAINT `lop_ibfk_1` FOREIGN KEY (`MaKhoa`) REFERENCES `khoa` (`MaKhoa`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `phancong_gv_lop`
+--
+ALTER TABLE `phancong_gv_lop`
+  ADD CONSTRAINT `phancong_gv_lop_ibfk_1` FOREIGN KEY (`MaLop`) REFERENCES `lop` (`MaLop`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `phancong_gv_lop_ibfk_2` FOREIGN KEY (`MaGV`) REFERENCES `giangvien` (`MaGV`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `sinhvien`
