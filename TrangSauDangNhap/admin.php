@@ -35,13 +35,13 @@
       <div class="sidebar-wrapper">
         <ul class="nav menu">
                     <li class="nav-item active  ">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="admin.php">
                         <i class="fas fa-home"></i>
                             <p>Trang chủ</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="Khoa.php">
                         <i class="fas fa-university"></i>
                             <p>Khoa</p>
                         </a>
@@ -150,38 +150,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Site Traffic Overview
-                        <ul class="pull-right panel-settings panel-button-tab-right">
-                            <li class="dropdown">
-                                <a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <em class="fa fa-cogs"></em>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <ul class="dropdown-settings">
-                                            <li>
-                                                <a href="#">
-                                                    <em class="fa fa-cog"></em> Settings 1
-                                                </a>
-                                            </li>
-                                            <li class="divider"></li>
-                                            <li>
-                                                <a href="#">
-                                                    <em class="fa fa-cog"></em> Settings 2
-                                                </a>
-                                            </li>
-                                            <li class="divider"></li>
-                                            <li>
-                                                <a href="#">
-                                                    <em class="fa fa-cog"></em> Settings 3
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                       
                         <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
-                    <div class="panel-body">
+                    <div class="panel-body" >
                         <div class="canvas-wrapper">
                             <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
                         </div>
@@ -190,7 +161,44 @@
             </div>
         </div>
 
-        
+
+        <div class="row footer_main">
+            <div class="col-xs-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4>New Orders</h4>
+                        <div class="easypiechart" id="easypiechart-blue" data-percent="92"><span class="percent">92%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4>Comments</h4>
+                        <div class="easypiechart" id="easypiechart-orange" data-percent="65"><span class="percent">65%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4>New Users</h4>
+                        <div class="easypiechart" id="easypiechart-teal" data-percent="56"><span class="percent">56%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4>Visitors</h4>
+                        <div class="easypiechart" id="easypiechart-red" data-percent="27"><span class="percent">27%</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.row-->
+
+
     </main>
     <footer>
         <div class="container-fluid  pageFooter">
@@ -225,11 +233,27 @@
 
     </footer>
     </div>
-    </div>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="../js/ADMIN.js"></script>
+    <script src="../js/chart.min.js"></script>
+    <script src="../js/chart-data.js"></script>
+    <script src="../js/easypiechart.js"></script>
+    <script src="../js/easypiechart-data.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
+    <script src="../js/jv.js"></script>
+    <script>
+        $(document).ready(function () {
+            var chart1 = document.getElementById("line-chart").getContext("2d");
+            window.myLine = new Chart(chart1).Line(lineChartData, {
+                responsive: true,
+                scaleLineColor: "rgba(0,0,0,.2)",
+                scaleGridLineColor: "rgba(0,0,0,.05)",
+                scaleFontColor: "#c5c7cc"
+            });
+        }); 
+    </script>
 </body>
 
 </html>
