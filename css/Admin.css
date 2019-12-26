@@ -1,6 +1,6 @@
 .pageHeader {
     height: 100px;
-    border-bottom: 1px solid rgb(107, 106, 106);
+    border-bottom: 1px dotted rgb(107, 106, 106);
 }
 
 .pageHeader h1 {
@@ -30,6 +30,35 @@
 .sidebar .logo {
     padding: 35px 15px;
     height: 100px;
+    color: rgb(134, 136, 134);
+}
+
+.logo {
+    position: relative;
+    display: inline-block;
+}
+
+.nav_user {
+    display: none;
+    position: inherit;
+    background-color: #f9f9f9;
+    margin-top: 35px;
+    padding: 12px 16px;
+    z-index: 5;
+    border-radius: 5px;
+    padding: 0px;
+}
+
+.nav_user a {
+    color: black;
+}
+
+.logo:hover .nav_user {
+    display: block;
+}
+
+.nav_user a:hover {
+    background-color: rgb(161, 157, 157);
 }
 
 
@@ -37,6 +66,77 @@
 
 .main_page {
     height: 1000px;
+}
+
+.panel-container {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border-bottom: 1px dotted rgb(107, 106, 106);
+}
+
+.panel {
+    margin-bottom: 20px;
+}
+
+.no-padding {
+    padding: 0;
+    margin: 0;
+    height: 150px;
+    display: block;
+}
+
+.panel-teal {
+    background: #1ebfae;
+    color: #fff;
+}
+
+.panel-widget {
+    padding: 10px 0;
+    position: relative;
+    box-shadow: none;
+    border-radius: 0;
+    background: none;
+    text-align: center;
+    color: #333;
+}
+
+.panel-widget .text-muted {
+    margin-top: -6px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8em;
+    padding-top: 20px;
+}
+
+.panel-widget .large {
+    color: #373b45;
+    font-size: 3em;
+    padding-bottom: 20px;
+}
+
+.fa-xl {
+    font-size: 2em;
+    padding-bottom: 25px;
+}
+
+.color-gray {
+    color: #444444;
+}
+
+.color-blue {
+    color: #30a5ff;
+}
+
+.color-teal {
+    color: #1ebfae;
+}
+
+.color-orange {
+    color: #ffb53e;
+}
+
+.color-red {
+    color: #f9243f;
 }
 
 
