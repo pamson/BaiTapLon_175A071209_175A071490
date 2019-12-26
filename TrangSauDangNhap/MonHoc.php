@@ -12,7 +12,7 @@ include ("leftBody.php");
                             <p>Trang chủ</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="Khoa.php">
                         <i class="fas fa-university"></i>
                             <p>Khoa</p>
@@ -36,7 +36,7 @@ include ("leftBody.php");
                             <p>Sinh viên</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item active">
                         <a class="nav-link" href="MonHoc.php">
                         <i class="fas fa-book"></i>
                             <p>Môn học</p>
@@ -80,9 +80,11 @@ include ("leftBody.php");
 						<thead>
 							<tr class="table100-head">
 								<th class="column1">STT</th>
-								<th class="column2">Mã khoa</th>
-								<th class="column3">Tên khoa</th>
-								
+								<th class="column2">Mã môn học</th>
+								<th class="column3">Tên môn học</th>
+								<th class="column4">Số tín chỉ</th>
+								<th class="column5">Lý thuyết</th>
+								<th class="column6">Thực hành</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -90,9 +92,11 @@ include ("leftBody.php");
 									<td class="column1"></td>
 									<td class="column2"></td>
 									<td class="column3"></td>
-									
+									<td class="column4"></td>
+									<td class="column5"></td>
+									<td class="column6"></td>
                                 </tr>	
-											
+                                					
 						</tbody>
 					</table>
 				</div>

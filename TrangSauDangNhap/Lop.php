@@ -12,13 +12,13 @@ include ("leftBody.php");
                             <p>Trang chủ</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="Khoa.php">
                         <i class="fas fa-university"></i>
                             <p>Khoa</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item active">
                         <a class="nav-link" href="Lop.php">
                         <i class="fas fa-store-alt"></i>
                             <p>Lớp</p>
@@ -79,20 +79,23 @@ include ("leftBody.php");
 					<table>
 						<thead>
 							<tr class="table100-head">
-								<th class="column1">STT</th>
-								<th class="column2">Mã khoa</th>
-								<th class="column3">Tên khoa</th>
+								<th class=" lop1">STT</th>
+								<th class=" lop2">Mã lớp</th>
+                                <th class=" lop3">Mã khoa</th>
+                                <th class="lop4">Tên lớp</th>
+								<th class=" lop5">Sĩ số</th>
 								
 							</tr>
 						</thead>
 						<tbody>
 								<tr>
-									<td class="column1"></td>
-									<td class="column2"></td>
-									<td class="column3"></td>
-									
+									<td class=" lop1"></td>
+									<td class=" lop2"></td>
+									<td class="lop3"></td>
+									<td class="lop4"></td>
+									<td class="lop5"></td>
                                 </tr>	
-											
+                                					
 						</tbody>
 					</table>
 				</div>

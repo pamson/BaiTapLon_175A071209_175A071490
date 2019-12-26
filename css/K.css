@@ -1,0 +1,201 @@
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container-table100 {
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0px;
+}
+
+.wrap-table100 {
+    width: 1320px;
+}
+
+table {
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+table * {
+    position: relative;
+}
+
+table td,
+table th {
+    padding-left: 8px;
+}
+
+table thead tr {
+    height: 60px;
+    background: #36304a;
+}
+
+table tbody tr {
+    height: 50px;
+}
+
+table tbody tr:last-child {
+    border: 0;
+}
+
+table td,
+table th {
+    text-align: left;
+}
+
+table td.l,
+table th.l {
+    text-align: right;
+}
+
+table td.c,
+table th.c {
+    text-align: center;
+}
+
+table td.r,
+table th.r {
+    text-align: center;
+}
+
+.table100-head th {
+    font-family: OpenSans-Regular;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: unset;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+tbody tr {
+    font-family: OpenSans-Regular;
+    font-size: 15px;
+    color: #808080;
+    line-height: 1.2;
+    font-weight: unset;
+}
+
+tbody tr:hover {
+    color: #555555;
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+.column1 {
+    width: 140px;
+    padding-left: 40px;
+}
+
+.column2 {
+    width: 150px;
+}
+
+.column3 {
+    width: 245px;
+}
+
+.column4 {
+    width: 100px;
+}
+
+.column5 {
+    width: 170px;
+}
+
+.column6 {
+    width: 222px;
+}
+
+.column7 {
+    width: 170px;
+}
+
+.column8 {
+    width: 222px;
+    padding-right: 62px;
+}
+
+.lop1 {
+    width: 50px;
+}
+
+.lop2 {
+    width: 150px;
+}
+
+.lop3 {
+    width: 150px;
+}
+
+.lop4 {
+    width: 200px;
+}
+
+.lop5 {
+    width: 100px;
+}
+
+.Diem1 {
+    width: 20px;
+}
+
+.Diem2 {
+    width: 50px;
+}
+
+.Diem3 {
+    width: 80px;
+}
+
+.Diem4 {
+    width: 20px;
+}
+
+.Diem5 {
+    width: 20px;
+}
+
+.Diem6 {
+    width: 50px;
+}
+
+.Diem7 {
+    width: 80px;
+}
+
+.Diem8 {
+    width: 50px;
+}
+
+.Diem9 {
+    width: 50px;
+}
+
+.Diem10 {
+    width: 50px;
+}
+
+.Diem11 {
+    width: 50px;
+}
+
+.Diem12 {
+    width: 50px;
+}
+
+.Use7 {
+    width: 50px;
+}

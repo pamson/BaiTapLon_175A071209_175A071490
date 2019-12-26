@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 26, 2019 lúc 09:07 AM
+-- Thời gian đã tạo: Th12 26, 2019 lúc 03:26 PM
 -- Phiên bản máy phục vụ: 10.4.6-MariaDB
 -- Phiên bản PHP: 7.3.8
 
@@ -41,6 +41,7 @@ CREATE TABLE `account` (
   `UserName` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `PassWord` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ConfirmPassword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'xác nhập lại password',
+  `verified` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Sex` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Role` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Cấp bậc',
@@ -52,10 +53,10 @@ CREATE TABLE `account` (
 -- Đang đổ dữ liệu cho bảng `account`
 --
 
-INSERT INTO `account` (`UserName`, `PassWord`, `ConfirmPassword`, `Name`, `Sex`, `Role`, `Email`, `Address`) VALUES
-('175A071209', '175A071204', '175A071204', 'Phạm Thế Sơn', 'Nam', 'SV', 'Pamson@gmail.com', 'Nam Định'),
-('175A071490', '175A071490', '175A071490', 'Đỗ Cảnh Dương', 'Nam', 'SV', 'DuongDo@gmail.com', 'Nam Định'),
-('ADMIN', '1', '1', 'Phạm Thế Sơn', 'Nam', 'ADMIN', 'PamSon@gmail.com', 'Nam Định');
+INSERT INTO `account` (`UserName`, `PassWord`, `ConfirmPassword`, `verified`, `Name`, `Sex`, `Role`, `Email`, `Address`) VALUES
+('175A071209', '175A071204', '175A071204', NULL, 'Phạm Thế Sơn', 'Nam', 'SV', 'Pamson@gmail.com', 'Nam Định'),
+('175A071490', '175A071490', '175A071490', NULL, 'Đỗ Cảnh Dương', 'Nam', 'SV', 'DuongDo@gmail.com', 'Nam Định'),
+('ADMIN', '1', '1', NULL, 'Phạm Thế Sơn', 'Nam', 'ADMIN', 'PamSon@gmail.com', 'Nam Định');
 
 -- --------------------------------------------------------
 

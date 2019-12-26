@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="../css/admin.css">
   <!--Css phan trang chủ-->
   <link rel="stylesheet" type="text/css" href="../css/util.css">
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
+  <link rel="stylesheet" type="text/css" href="../css/k.css">
 </head>
 
 <body class="dark-edition">
