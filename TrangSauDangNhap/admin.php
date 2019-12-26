@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +24,7 @@
     <div class="row">
     <div class="col-sm-2">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="../images/sidebar-2.jpg">
-        <div class="logo"><span>Xin chào! Phạm Thế Sơn</span>
+        <div class="logo"><span>Xin chào! <?php echo $_SESSION['name']; ?></span>
             <div class="nav_user">
             <nav class="nav flex-column ">
                 <a class="nav-link active" href="#!"><i class="fas fa-home"></i>Trang chủ</a>
