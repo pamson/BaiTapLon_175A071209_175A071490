@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 14, 2019 lúc 10:03 AM
+-- Thời gian đã tạo: Th12 26, 2019 lúc 08:41 AM
 -- Phiên bản máy phục vụ: 10.4.6-MariaDB
 -- Phiên bản PHP: 7.3.8
 
@@ -22,6 +22,15 @@ SET time_zone = "+00:00";
 -- Cơ sở dữ liệu: `baitaplon_congngheweb`
 --
 
+DELIMITER $$
+--
+-- Thủ tục
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `p_DiemSV` (IN `MaSinhVien` VARCHAR(20) CHARSET utf8)  NO SQL
+SELECT diemsv.MaMH, monhoc.TenMH,diemsv.SoTC,diemsv.LanThi,diemsv.DanhGia,sinhvien.TenSV,diemsv.MaSV,diemsv.QuaTrinh,diemsv.Thi,diemsv.TKHP,diemsv.Diemchu FROM sinhvien,diemsv,monhoc WHERE sinhvien.MaSV= diemsv.MaSV AND monhoc.MaMH = diemsv.MaMH AND sinhvien.MaSV = MaSinhVien$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -30,8 +39,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `account` (
   `UserName` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `PassWord` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ConfirmPassword` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'xác nhập lại password',
+  `PassWord` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ConfirmPassword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'xác nhập lại password',
   `Name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Sex` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Role` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Cấp bậc',
@@ -44,7 +53,8 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`UserName`, `PassWord`, `ConfirmPassword`, `Name`, `Sex`, `Role`, `Email`, `Address`) VALUES
-('175A071209', '175A071204', '175A071204', 'Phạm Thế Sơn', 'Nam', 'SV', 'PamSon@gmai.com', 'Nam Định');
+('175A071209', '175A071204', '175A071204', 'Phạm Thế Sơn', 'Nam', 'SV', 'Pamson@gmail.com', 'Nam Định'),
+('175A071490', '175A071490', '175A071490', 'Đỗ Cảnh Dương', 'Nam', 'SV', 'DuongDo@gmail.com', 'Nam Định');
 
 --
 -- Bẫy `account`
@@ -71,6 +81,14 @@ CREATE TABLE `ctmonhoc` (
   `HK` tinyint(4) NOT NULL COMMENT 'Học Kì'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `ctmonhoc`
+--
+
+INSERT INTO `ctmonhoc` (`MaLop`, `MaGV`, `MaMH`, `HK`) VALUES
+('59TH2', 'KTDung', 'CSE450', 2),
+('59TH2', 'KTDung', 'CSE488', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -82,13 +100,39 @@ CREATE TABLE `diemsv` (
   `SoTC` int(11) NOT NULL COMMENT 'Số tín chỉ',
   `LanHoc` tinyint(4) NOT NULL COMMENT 'Lần học',
   `LanThi` tinyint(4) NOT NULL COMMENT 'Lần Thi',
-  `DanhGia` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Đánh Giá',
+  `DanhGia` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Đánh Giá',
   `MaSV` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `QuaTrinh` float NOT NULL COMMENT 'Điểm quá trình',
   `Thi` float NOT NULL COMMENT 'Điểm thi',
   `TKHP` float DEFAULT NULL COMMENT 'Tổng kết học phần',
   `Diemchu` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Điểm chữ'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `diemsv`
+--
+
+INSERT INTO `diemsv` (`MaMH`, `SoTC`, `LanHoc`, `LanThi`, `DanhGia`, `MaSV`, `QuaTrinh`, `Thi`, `TKHP`, `Diemchu`) VALUES
+('CSE450', 3, 1, 1, 'Đạt', '175A071209', 8.5, 7.5, 7.9, 'B'),
+('CSE488', 3, 1, 1, 'Đạt', '175A071209', 7.5, 7.5, 7.5, 'B');
+
+--
+-- Bẫy `diemsv`
+--
+DELIMITER $$
+CREATE TRIGGER `Insert_diemSV` BEFORE INSERT ON `diemsv` FOR EACH ROW SET NEW.TKHP = NEW.QuaTrinh*0.4 + NEW.Thi*0.6,
+NEW.Diemchu = CASE
+when NEW.TKHP >= 4 AND NEW.TKHP < 5.5 then "D" 
+when  NEW.TKHP >= 5.5 AND NEW.TKHP < 7 then "C"
+when  NEW.TKHP >= 7 AND NEW.TKHP < 8.5 then "B"
+when  NEW.TKHP >= 8.5 AND NEW.TKHP < 10 then "A"
+else "F"
+END, NEW.DanhGia = CASE
+WHEN NEW.TKHP >= 4 THEN "Đạt"
+ELSE "Không đạt"
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -170,6 +214,14 @@ CREATE TABLE `monhoc` (
   `TH` tinyint(4) NOT NULL COMMENT 'Thực hành'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `monhoc`
+--
+
+INSERT INTO `monhoc` (`MaMH`, `TenMH`, `SoTC`, `LT`, `TH`) VALUES
+('CSE450', 'Lập trình nâng cao', 3, 30, 15),
+('CSE488', 'Công nghệ Web', 3, 35, 30);
+
 -- --------------------------------------------------------
 
 --
@@ -191,8 +243,8 @@ CREATE TABLE `sinhvien` (
 --
 
 INSERT INTO `sinhvien` (`MaSV`, `TenSV`, `MaLop`, `GioiTinh`, `SĐT`, `Email`, `DiaChi`) VALUES
-('175A071209', 'Phạm Thế Sơn', '59TH2', 'Nam', '2323265', 'PamSon@gmai.com', 'Nam Định'),
-('175A071490', 'Đỗ Cảnh Dương', '59TH2', 'Nam', '21212154', 'DuongDo@gmail.com', 'Nam Định');
+('175A071209', 'Phạm Thế Sơn', '59TH2', 'Nam', '45454', 'Pamson@gmail.com', 'Nam Định'),
+('175A071490', 'Đỗ Cảnh Dương', '59TH2', 'Nam', '121545', 'DuongDo@gmail.com', 'Nam Định');
 
 --
 -- Bẫy `sinhvien`
@@ -219,7 +271,7 @@ DELIMITER ;
 
 CREATE TABLE `userlogin` (
   `UserName` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `PassWord` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `PassWord` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Role` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Phân quyền'
 ) ;
 
@@ -228,7 +280,37 @@ CREATE TABLE `userlogin` (
 --
 
 INSERT INTO `userlogin` (`UserName`, `PassWord`, `Role`) VALUES
-('175A071209', '175A071204', 'SV');
+('175A071209', '175A071204', 'SV'),
+('175A071490', '175A071490', 'SV');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc đóng vai cho view `v_diemsv`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_diemsv` (
+`MaMH` varchar(20)
+,`TenMH` varchar(50)
+,`SoTC` int(11)
+,`LanThi` tinyint(4)
+,`DanhGia` varchar(10)
+,`TenSV` varchar(50)
+,`MaSV` varchar(30)
+,`QuaTrinh` float
+,`Thi` float
+,`TKHP` float
+,`Diemchu` varchar(3)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc cho view `v_diemsv`
+--
+DROP TABLE IF EXISTS `v_diemsv`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_diemsv`  AS  select `diemsv`.`MaMH` AS `MaMH`,`monhoc`.`TenMH` AS `TenMH`,`diemsv`.`SoTC` AS `SoTC`,`diemsv`.`LanThi` AS `LanThi`,`diemsv`.`DanhGia` AS `DanhGia`,`sinhvien`.`TenSV` AS `TenSV`,`diemsv`.`MaSV` AS `MaSV`,`diemsv`.`QuaTrinh` AS `QuaTrinh`,`diemsv`.`Thi` AS `Thi`,`diemsv`.`TKHP` AS `TKHP`,`diemsv`.`Diemchu` AS `Diemchu` from ((`monhoc` join `sinhvien`) join `diemsv`) where `diemsv`.`MaMH` = `monhoc`.`MaMH` and `sinhvien`.`MaSV` = `diemsv`.`MaSV` ;
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -280,7 +362,8 @@ ALTER TABLE `lop`
 -- Chỉ mục cho bảng `monhoc`
 --
 ALTER TABLE `monhoc`
-  ADD PRIMARY KEY (`MaMH`);
+  ADD PRIMARY KEY (`MaMH`),
+  ADD UNIQUE KEY `Check_uni` (`TenMH`);
 
 --
 -- Chỉ mục cho bảng `sinhvien`
