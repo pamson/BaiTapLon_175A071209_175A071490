@@ -1,7 +1,7 @@
 <?php
+
 include ('head.php');
-?>
-<?php
+
 include ("leftBody.php");
 ?>
 <div class="sidebar-wrapper">
