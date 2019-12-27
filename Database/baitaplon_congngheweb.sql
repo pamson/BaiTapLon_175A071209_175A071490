@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 26, 2019 lúc 05:50 PM
+-- Thời gian đã tạo: Th12 27, 2019 lúc 02:34 PM
 -- Phiên bản máy phục vụ: 10.4.6-MariaDB
 -- Phiên bản PHP: 7.3.8
 
@@ -70,6 +70,14 @@ CREATE TABLE `ctmonhoc` (
   `HK` tinyint(4) NOT NULL COMMENT 'Học Kì'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `ctmonhoc`
+--
+
+INSERT INTO `ctmonhoc` (`MaLop`, `MaMH`, `HK`) VALUES
+('59TH1', 'CSE450', 1),
+('59TH2', 'CSE450', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -130,13 +138,6 @@ CREATE TABLE `giangvien` (
   `Email` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `DiaChi` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ;
-
---
--- Đang đổ dữ liệu cho bảng `giangvien`
---
-
-INSERT INTO `giangvien` (`MaGV`, `TenGV`, `CapBac`, `GioiTinh`, `SĐT`, `Email`, `DiaChi`) VALUES
-('KTDung', 'Kiều Tuấn Dũng', 'Thạc sĩ', 'Nam', '21224462', 'ktDung@wru.vn', 'Việt Nam');
 
 -- --------------------------------------------------------
 
@@ -246,7 +247,7 @@ CREATE TRIGGER `Delete_SV` AFTER DELETE ON `sinhvien` FOR EACH ROW DELETE FROM a
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `Insert_SV_Account` AFTER INSERT ON `sinhvien` FOR EACH ROW INSERT INTO account VALUES(NEW.MaSV,NEW.MaSV,NEW.MaSV,NEW.TenSV,NEW.GioiTinh,'SV',NEW.Email,NEW.DiaChi)
+CREATE TRIGGER `Insert_SV_Account` AFTER INSERT ON `sinhvien` FOR EACH ROW INSERT INTO account VALUES(NEW.MaSV,NEW.MaSV,NEW.MaSV,NULL,NEW.TenSV,NEW.GioiTinh,'SV',NEW.Email,NEW.DiaChi)
 $$
 DELIMITER ;
 DELIMITER $$
@@ -278,11 +279,114 @@ CREATE TABLE `v_diemsv` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc đóng vai cho view `v_hoso`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_hoso` (
+`MaSV` varchar(30)
+,`TenSV` varchar(50)
+,`MaLop` varchar(30)
+,`GioiTinh` varchar(5)
+,`Role` varchar(5)
+,`SĐT` varchar(11)
+,`Email` varchar(32)
+,`DiaChi` varchar(50)
+,`UserName` varchar(20)
+,`PassWord` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc đóng vai cho view `v_hoso_admin`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_hoso_admin` (
+`Name` varchar(50)
+,`Sex` varchar(5)
+,`Role` varchar(5)
+,`Email` varchar(32)
+,`Address` varchar(50)
+,`UserName` varchar(20)
+,`PassWord` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc đóng vai cho view `v_hoso_gv`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_hoso_gv` (
+`Name` varchar(50)
+,`Sex` varchar(5)
+,`Role` varchar(5)
+,`Email` varchar(32)
+,`Address` varchar(50)
+,`UserName` varchar(20)
+,`PassWord` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc đóng vai cho view `v_hoso_qt`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_hoso_qt` (
+`Name` varchar(50)
+,`Sex` varchar(5)
+,`Role` varchar(5)
+,`Email` varchar(32)
+,`Address` varchar(50)
+,`UserName` varchar(20)
+,`PassWord` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc cho view `v_diemsv`
 --
 DROP TABLE IF EXISTS `v_diemsv`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_diemsv`  AS  select `diemsv`.`MaMH` AS `MaMH`,`monhoc`.`TenMH` AS `TenMH`,`diemsv`.`SoTC` AS `SoTC`,`diemsv`.`LanThi` AS `LanThi`,`diemsv`.`DanhGia` AS `DanhGia`,`sinhvien`.`TenSV` AS `TenSV`,`diemsv`.`MaSV` AS `MaSV`,`diemsv`.`QuaTrinh` AS `QuaTrinh`,`diemsv`.`Thi` AS `Thi`,`diemsv`.`TKHP` AS `TKHP`,`diemsv`.`Diemchu` AS `Diemchu` from ((`monhoc` join `sinhvien`) join `diemsv`) where `diemsv`.`MaMH` = `monhoc`.`MaMH` and `sinhvien`.`MaSV` = `diemsv`.`MaSV` ;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc cho view `v_hoso`
+--
+DROP TABLE IF EXISTS `v_hoso`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_hoso`  AS  select `sinhvien`.`MaSV` AS `MaSV`,`sinhvien`.`TenSV` AS `TenSV`,`sinhvien`.`MaLop` AS `MaLop`,`sinhvien`.`GioiTinh` AS `GioiTinh`,`account`.`Role` AS `Role`,`sinhvien`.`SĐT` AS `SĐT`,`sinhvien`.`Email` AS `Email`,`sinhvien`.`DiaChi` AS `DiaChi`,`account`.`UserName` AS `UserName`,`account`.`PassWord` AS `PassWord` from (`sinhvien` join `account`) where `account`.`UserName` = `sinhvien`.`MaSV` ;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc cho view `v_hoso_admin`
+--
+DROP TABLE IF EXISTS `v_hoso_admin`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_hoso_admin`  AS  select `account`.`Name` AS `Name`,`account`.`Sex` AS `Sex`,`account`.`Role` AS `Role`,`account`.`Email` AS `Email`,`account`.`Address` AS `Address`,`account`.`UserName` AS `UserName`,`account`.`PassWord` AS `PassWord` from `account` where `account`.`Role` = 'ADMIN' ;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc cho view `v_hoso_gv`
+--
+DROP TABLE IF EXISTS `v_hoso_gv`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_hoso_gv`  AS  select `account`.`Name` AS `Name`,`account`.`Sex` AS `Sex`,`account`.`Role` AS `Role`,`account`.`Email` AS `Email`,`account`.`Address` AS `Address`,`account`.`UserName` AS `UserName`,`account`.`PassWord` AS `PassWord` from `account` where `account`.`Role` = 'GV' ;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc cho view `v_hoso_qt`
+--
+DROP TABLE IF EXISTS `v_hoso_qt`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_hoso_qt`  AS  select `account`.`Name` AS `Name`,`account`.`Sex` AS `Sex`,`account`.`Role` AS `Role`,`account`.`Email` AS `Email`,`account`.`Address` AS `Address`,`account`.`UserName` AS `UserName`,`account`.`PassWord` AS `PassWord` from `account` where `account`.`Role` = 'QL' ;
 
 --
 -- Chỉ mục cho các bảng đã đổ

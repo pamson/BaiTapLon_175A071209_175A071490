@@ -7,19 +7,19 @@ include ("leftBody.php");
       <div class="sidebar-wrapper">
         <ul class="nav menu">
                     <li class="nav-item active  ">
-                        <a class="nav-link" href="RoleSinhVien.php">
+                        <a class="nav-link" href="RoleQuanTri.php">
                         <i class="fas fa-home"></i>
                             <p>Trang chủ</p>
                         </a>
                     </li>
-                   
+                    
                     <li class="nav-item ">
-                        <a class="nav-link" href="RoleSVDiem.php">
-                        <i class="fas fa-table"></i>
-                            <p>Điểm sinh viên</p>
+                        <a class="nav-link" href="RoleQTAccount.php">
+                        <i class="fas fa-users"></i>
+                            <p>Thông tin tài khoản</p>
                         </a>
                     </li>
-                  
+                    
         </ul>
       </div>
     </div>
