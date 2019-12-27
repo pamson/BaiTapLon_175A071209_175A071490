@@ -36,47 +36,56 @@ include ("leftBody.php");
         </div>
     </header>
     <main>
-    <div class="banner-info">
-				<div class="col-md-7 header-right">
+    
+				<div class="col-sm-7 " id = "information">
+                    <div class="banner-info">
+                    <div class=" header-right">
 					<h1>Hi !</h1>
-					<h6>UX & UI DESIGNER</h6>
+					<h6><?php $_SESSION['name'];?></h6>
 					<ul class="address">
 					
 					<li>
 							<ul class="address-text">
-								<li><b>NAME</b></li>
-								<li>I'M ROB LEE</li>
+								<li><b>ID </b></li>
+								<li></li>
 							</ul>
 						</li>
 						<li>
 							<ul class="address-text">
-								<li><b>D.O.B</b></li>
-								<li>23-06-1980</li>
+								<li><b>Name </b></li>
+								<li></li>
 							</ul>
 						</li>
 						<li>
 							<ul class="address-text">
-								<li><b>PHONE </b></li>
-								<li>+00 111 222 3333</li>
+								<li><b>Class code </b></li>
+								<li></li>
 							</ul>
 						</li>
 						<li>
 							<ul class="address-text">
-								<li><b>ADDRESS </b></li>
-								<li>756 Global Place,New York.</li>
+								<li><b>Sex </b></li>
+								<li></li>
 							</ul>
 						</li>
 						<li>
 							<ul class="address-text">
-								<li><b>E-MAIL </b></li>
-								<li> mail@example.com</li>
+								<li><b>Email </b></li>
+								<li> </li>
 							</ul>
 						</li>
-						
+						<li>
+							<ul class="address-text">
+								<li><b>Address </b></li>
+								<li> </li>
+							</ul>
+						</li>
 						
 					</ul>
                 </div>
-            </div>
+                     </div>
+                </div>
+   
         <div class="container-fluid main_page">
             <div class="panel panel-container">
     

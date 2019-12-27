@@ -6,6 +6,7 @@ session_start();
 	include 'connect.php';
 	$sql="SELECT * FROM  account  WHERE UserName = '$username' and PassWord ='$password'";
 	$result=mysqli_query($connect,$sql);
+	mysqli_set_charset($connect, "UTF8");
 		if(mysqli_num_rows($result)>0)
 		{
             $row=mysqli_fetch_assoc($result);
