@@ -1,7 +1,12 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['lv']) || ($_SESSION['lv'] != 'SV'))
+{
+ header("Location:../dangnhap.php");
+exit();}
 include ('head.php');
-?>
-<?php
 include ("leftBody.php");
 ?>
 <div class="sidebar-wrapper">

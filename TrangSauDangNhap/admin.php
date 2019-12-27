@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 <?php
+session_start();
+if (!isset($_SESSION['lv']) || ($_SESSION['lv'] != 'ADMIN'))
+{
+ header("Location:../dangnhap.php");
+exit();}
 include ('head.php');
-?>
-<?php
+
 include ("leftBody.php");
 ?>
 
