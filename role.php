@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['lv'])){
     if($_SESSION['lv'] == 'SV'){
-        header("location:TrangSauDangNhap/admin.php");
+        header("location:TrangSauDangNhap/RoleSinhVien.php");
     }
     else {
         header("location:TrangSauDangNhap/admin.php");

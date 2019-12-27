@@ -278,6 +278,13 @@ tbody tr:hover {
 }
 
 
+/***********************/
+
+#information {
+    display: none;
+}
+
+
 /*--banner-info--*/
 
 .banner-info {
