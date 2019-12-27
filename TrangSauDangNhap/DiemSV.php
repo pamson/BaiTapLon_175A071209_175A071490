@@ -55,12 +55,7 @@ include ("leftBody.php");
                             <p>Điểm sinh viên</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="account.php">
-                        <i class="fas fa-users"></i>
-                            <p>Thông tin tài khoản</p>
-                        </a>
-                    </li>
+                    
                     
         </ul>
 	  </div>
