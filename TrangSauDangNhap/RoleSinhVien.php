@@ -31,8 +31,50 @@ include ("leftBody.php");
         </div>
     </header>
     <main>
+    <div class="banner-info">
+				<div class="col-md-7 header-right">
+					<h1>Hi !</h1>
+					<h6>UX & UI DESIGNER</h6>
+					<ul class="address">
+					
+					<li>
+							<ul class="address-text">
+								<li><b>NAME</b></li>
+								<li>I'M ROB LEE</li>
+							</ul>
+						</li>
+						<li>
+							<ul class="address-text">
+								<li><b>D.O.B</b></li>
+								<li>23-06-1980</li>
+							</ul>
+						</li>
+						<li>
+							<ul class="address-text">
+								<li><b>PHONE </b></li>
+								<li>+00 111 222 3333</li>
+							</ul>
+						</li>
+						<li>
+							<ul class="address-text">
+								<li><b>ADDRESS </b></li>
+								<li>756 Global Place,New York.</li>
+							</ul>
+						</li>
+						<li>
+							<ul class="address-text">
+								<li><b>E-MAIL </b></li>
+								<li> mail@example.com</li>
+							</ul>
+						</li>
+						
+						
+					</ul>
+                </div>
+            </div>
         <div class="container-fluid main_page">
             <div class="panel panel-container">
+    
 			    <div class="row">
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
