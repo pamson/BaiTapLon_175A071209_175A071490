@@ -1,10 +1,10 @@
 <?php
-session_start();
+include ('head.php');
 if (!isset($_SESSION['lv']) || ($_SESSION['lv'] != 'GV'))
 {
  header("Location:../dangnhap.php");
 exit();}
-include ('head.php');
+
 
 include ("leftBody.php");
 ?>

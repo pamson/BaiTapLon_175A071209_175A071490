@@ -14,5 +14,9 @@ if(isset($_SESSION['lv'])){
     {
         header("location:TrangSauDangNhap/admin.php");
     }
+    else
+    {
+        header("location:TrangSauDangNhap/RoleQuanTri.php");
+    }
 }
 ?>
