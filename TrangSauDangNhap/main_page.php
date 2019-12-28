@@ -1,44 +1,6 @@
-<?php
-
-include ('head.php');
-if (!isset($_SESSION['lv']) || ($_SESSION['lv'] != 'QL'))
-{
- header("Location:../dangnhap.php");
-exit();}
-
-
-
-include ("leftBody.php");
-?>
-      <div class="sidebar-wrapper">
-        <ul class="nav menu">
-                    <li class="nav-item active  ">
-                        <a class="nav-link" href="RoleQuanTri.php">
-                        <i class="fas fa-home"></i>
-                            <p>Trang chủ</p>
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item ">
-                        <a class="nav-link" href="RoleQTAccount.php">
-                        <i class="fas fa-users"></i>
-                            <p>Thông tin tài khoản</p>
-                        </a>
-                    </li>
-                    
-        </ul>
-      </div>
-    </div>
-    </div>
-    <div class="col-sm-10 page_right">
-    <header>
-        <div class="container-fluid pageHeader">
-            <h1>HỆ THỐNG ĐĂNG KÍ HỌC - TRƯỜNG ĐẠI HỌC THỦY LỢI</h1>
-        </div>
-    </header>
-    <main>
-        <div class="container-fluid main_page">
+<div  class="container-fluid main_page">
             <div class="panel panel-container">
+    
 			    <div class="row">
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
@@ -128,13 +90,3 @@ include ("leftBody.php");
             </div>
         </div>
         <!--/.row-->
-
-
-    </main>
-    <?php
-    include ("footerLogin.php");
-    ?>
-</div>
-<?php
-include ("foot.php");
-?>

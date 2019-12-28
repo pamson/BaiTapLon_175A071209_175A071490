@@ -1,17 +1,17 @@
 <?php
-session_start();
+include ('head.php');
 
 if (!isset($_SESSION['lv']) || ($_SESSION['lv'] != 'SV'))
 {
  header("Location:../dangnhap.php");
 exit();}
-include ('head.php');
+
 
 include ("leftBody.php");
 ?>
       <div class="sidebar-wrapper">
         <ul class="nav menu">
-                    <li class="nav-item active  ">
+                    <li  class="nav-item active  ">
                         <a class="nav-link" href="RoleSinhVien.php">
                         <i class="fas fa-home"></i>
                             <p>Trang chủ</p>
@@ -36,150 +36,11 @@ include ("leftBody.php");
         </div>
     </header>
     <main>
-    
-				<div class="col-sm-7 " id = "information">
-                    <div class="banner-info">
-                    <div class=" header-right">
-					<h1>Hi !</h1>
-					<h6><?php $_SESSION['name'];?></h6>
-					<ul class="address">
-					
-					<li>
-							<ul class="address-text">
-								<li><b>ID </b></li>
-								<li></li>
-							</ul>
-						</li>
-						<li>
-							<ul class="address-text">
-								<li><b>Name </b></li>
-								<li></li>
-							</ul>
-						</li>
-						<li>
-							<ul class="address-text">
-								<li><b>Class code </b></li>
-								<li></li>
-							</ul>
-						</li>
-						<li>
-							<ul class="address-text">
-								<li><b>Sex </b></li>
-								<li></li>
-							</ul>
-						</li>
-						<li>
-							<ul class="address-text">
-								<li><b>Email </b></li>
-								<li> </li>
-							</ul>
-						</li>
-						<li>
-							<ul class="address-text">
-								<li><b>Address </b></li>
-								<li> </li>
-							</ul>
-						</li>
-						
-					</ul>
-                </div>
-                     </div>
-                </div>
+    <?php include ("HoSoSV.php");
    
-        <div class="container-fluid main_page">
-            <div class="panel panel-container">
-    
-			    <div class="row">
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-teal panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large">120</div>
-							<div class="text-muted">New Orders</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-blue panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-comments color-orange"></em>
-							<div class="large">52</div>
-							<div class="text-muted">Comments</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">24</div>
-							<div class="text-muted">New Users</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-					<div class="panel panel-red panel-widget ">
-						<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
-							<div class="large">25.2k</div>
-							<div class="text-muted">Page Views</div>
-						</div>
-					</div>
-				</div>
-			</div><!--/.row-->
-		</div>
+        include ("main_page.php");
 
-
-		<div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Site Traffic Overview
-                       
-                        <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
-                    <div class="panel-body" >
-                        <div class="canvas-wrapper">
-                            <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row footer_main">
-            <div class="col-xs-6 col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-body easypiechart-panel">
-                        <h4>New Orders</h4>
-                        <div class="easypiechart" id="easypiechart-blue" data-percent="92"><span class="percent">92%</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-body easypiechart-panel">
-                        <h4>Comments</h4>
-                        <div class="easypiechart" id="easypiechart-orange" data-percent="65"><span class="percent">65%</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-body easypiechart-panel">
-                        <h4>New Users</h4>
-                        <div class="easypiechart" id="easypiechart-teal" data-percent="56"><span class="percent">56%</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-body easypiechart-panel">
-                        <h4>Visitors</h4>
-                        <div class="easypiechart" id="easypiechart-red" data-percent="27"><span class="percent">27%</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/.row-->
-
-
+    ?>
     </main>
     <?php
     include ("footerLogin.php");
@@ -187,4 +48,5 @@ include ("leftBody.php");
 </div>
 <?php
 include ("foot.php");
+
 ?>
