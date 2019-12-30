@@ -41,7 +41,7 @@ include ("leftBody.php");
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="RoleGVRoleSVDiem.php">
+                        <a class="nav-link" href="RoleGVDiemSV.php">
                         <i class="fas fa-table"></i>
                             <p>Điểm sinh viên</p>
                         </a>
@@ -58,6 +58,7 @@ include ("leftBody.php");
         </div>
     </header>
     <main>
+    <?php include ("HoSoGV.php")?>
         <div class="container-fluid main_page">
             <div class="panel panel-container">
 			    <div class="row">

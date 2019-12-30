@@ -37,6 +37,7 @@ include ("leftBody.php");
         </div>
     </header>
     <main>
+    <?php include ("HoSoQT.php")?>
         <div class="container-fluid main_page">
             <div class="panel panel-container">
 			    <div class="row">
