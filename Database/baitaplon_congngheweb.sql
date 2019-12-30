@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `baitaplon_congngheweb`
+-- Cơ sở dữ liệu: `id12089624_btl`
 --
 
 DELIMITER $$

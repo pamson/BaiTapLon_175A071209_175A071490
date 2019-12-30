@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Đại học Thủy Lợi</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/all.min.css">
-    <link rel="stylesheet" href="../css/stylehome.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/stylehome.css">
 
 </head>
 
 <body>
 <header>
-    <div id="logo"><img src="../images/logoDaiHocThuyLoi.png" alt=""></div>
+    <div id="logo"><img src="images/logoDaiHocThuyLoi.png" alt=""></div>
     <div class="form">
-    <form class="form-inline my-2 my-lg-0" action="../dangnhap.php" >
+    <form class="form-inline my-2 my-lg-0" action="dangnhap.php" >
                      
                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Đăng nhập</button>
                  </form>
@@ -31,13 +31,13 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img src="../images/tet2020.png" alt="First slide">
+                            <img src="images/tet2020.png" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img src="../images/nhanco.png" alt="Second slide">
+                            <img src="images/nhanco.png" alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                            <img src="../images/dangbo1.png" alt="Third slide">
+                            <img src="images/dangbo1.png" alt="Third slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">

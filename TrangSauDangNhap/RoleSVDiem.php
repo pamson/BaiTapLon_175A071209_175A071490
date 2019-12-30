@@ -11,25 +11,25 @@ exit();}
 <?php
 include ("leftBody.php");
 ?>
-      <div class="sidebar-wrapper">
+    <div class="sidebar-wrapper">
         <ul class="nav menu">
-                    <li class="nav-item   ">
-                        <a class="nav-link" href="RoleSinhVien.php">
-                        <i class="fas fa-home"></i>
-                            <p>Trang chủ</p>
-                        </a>
-                    </li>
+            <li class="nav-item   ">
+                <a class="nav-link" href="RoleSinhVien.php">
+                 <i class="fas fa-home"></i>
+                    <p>Trang chủ</p>
+                 </a>
+             </li>
                    
-                    <li class="nav-item active ">
-                        <a class="nav-link" href="RoleSVDiem.php">
-                        <i class="fas fa-table"></i>
-                            <p>Điểm sinh viên</p>
-                        </a>
-                    </li>
+             <li class="nav-item active ">
+                 <a class="nav-link" href="RoleSVDIEM.php">
+                   <i class="fas fa-table"></i>
+                     <p>Điểm sinh viên</p>
+                     </a>
+               </li>
                   
         </ul>
-      </div>
-    </div>
+        </div>
+        </div>
     </div>
     <div class="col-sm-10 page_right">
     <header>

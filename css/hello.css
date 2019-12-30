@@ -265,6 +265,17 @@
     margin-top: 180px;
 }
 
+@media screen and (max-width: 620px) {
+    .pageHeader,
+    .main_page,
+    .pageFooter,
+    .page_right {
+        width: 100%;
+        height: auto;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
+}
+
 
 /*********** Footer **************/
 
