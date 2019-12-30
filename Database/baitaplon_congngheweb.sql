@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 27, 2019 lúc 02:34 PM
+-- Thời gian đã tạo: Th12 30, 2019 lúc 10:20 AM
 -- Phiên bản máy phục vụ: 10.4.6-MariaDB
 -- Phiên bản PHP: 7.3.8
 
@@ -56,7 +56,9 @@ CREATE TABLE `account` (
 INSERT INTO `account` (`UserName`, `PassWord`, `ConfirmPassword`, `verified`, `Name`, `Sex`, `Role`, `Email`, `Address`) VALUES
 ('175A071209', '175A071204', '175A071204', NULL, 'Phạm Thế Sơn', 'Nam', 'SV', 'Pamson@gmail.com', 'Nam Định'),
 ('175A071490', '175A071490', '175A071490', NULL, 'Đỗ Cảnh Dương', 'Nam', 'SV', 'DuongDo@gmail.com', 'Nam Định'),
-('ADMIN', '1', '1', NULL, 'Phạm Thế Sơn', 'Nam', 'ADMIN', 'PamSon@gmail.com', 'Nam Định');
+('ADMIN', '1', '1', NULL, 'Phạm Thế Sơn', 'Nam', 'ADMIN', 'PamSon@gmail.com', 'Nam Định'),
+('KTDung', '1', '1', NULL, 'kiều Tuấn Dũng', 'Nam', 'GV', 'KTDung@wru.vn', 'Việt Nam'),
+('QT', '1', '1', NULL, 'Phạm Thế Sơn', 'Nam', 'QL', 'PamSon@gmail.com', 'Nam Định');
 
 -- --------------------------------------------------------
 
@@ -67,16 +69,17 @@ INSERT INTO `account` (`UserName`, `PassWord`, `ConfirmPassword`, `verified`, `N
 CREATE TABLE `ctmonhoc` (
   `MaLop` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `MaMH` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `HK` tinyint(4) NOT NULL COMMENT 'Học Kì'
+  `HK` tinyint(4) NOT NULL COMMENT 'Học Kì',
+  `NamHoc` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `ctmonhoc`
 --
 
-INSERT INTO `ctmonhoc` (`MaLop`, `MaMH`, `HK`) VALUES
-('59TH1', 'CSE450', 1),
-('59TH2', 'CSE450', 1);
+INSERT INTO `ctmonhoc` (`MaLop`, `MaMH`, `HK`, `NamHoc`) VALUES
+('59TH2', 'CSE450', 1, '2018-2019'),
+('59TH2', 'CSE488', 1, '2018-2019');
 
 -- --------------------------------------------------------
 
@@ -138,6 +141,29 @@ CREATE TABLE `giangvien` (
   `Email` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `DiaChi` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ;
+
+--
+-- Đang đổ dữ liệu cho bảng `giangvien`
+--
+
+INSERT INTO `giangvien` (`MaGV`, `TenGV`, `CapBac`, `GioiTinh`, `SĐT`, `Email`, `DiaChi`) VALUES
+('KTDung', 'kiều Tuấn Dũng', 'Thạc sĩ', 'Nam', '121545', 'KTDung@wru.vn', 'Việt Nam');
+
+--
+-- Bẫy `giangvien`
+--
+DELIMITER $$
+CREATE TRIGGER `Delete_GV` AFTER DELETE ON `giangvien` FOR EACH ROW DELETE FROM account WHERE UserName = OLD.MaGV
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `Insert_GV_Account` AFTER INSERT ON `giangvien` FOR EACH ROW INSERT INTO account VALUES(NEW.MaGV,NEW.MaGV,NEW.MaGV,NULL,NEW.TenGV,NEW.GioiTinh,'GV',NEW.Email,NEW.DiaChi)
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `Update_GV` AFTER UPDATE ON `giangvien` FOR EACH ROW UPDATE account set UserName = NEW.MaGV, PassWord = NEW.MaGV, ConfirmPassword = NEW.MaGV, Name = NEW.TenGV, Sex = NEW.GioiTinh, Email = NEW.Email,Address = NEW.DiaChi WHERE UserName = OLD.MaGV
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -252,7 +278,7 @@ $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `Update_SV` AFTER UPDATE ON `sinhvien` FOR EACH ROW UPDATE account set UserName = NEW.MaSV, PassWord = NEW.MaSV, ConfirmPassword = NEW.MaSV, Name = NEW.TenSV, Sex = NEW.GioiTinh, Email = NEW.Email,
-Address = NEW.DiaChi
+Address = NEW.DiaChi WHERE UserName = OLD.MaSV
 $$
 DELIMITER ;
 
@@ -288,11 +314,8 @@ CREATE TABLE `v_hoso` (
 ,`MaLop` varchar(30)
 ,`GioiTinh` varchar(5)
 ,`Role` varchar(5)
-,`SĐT` varchar(11)
 ,`Email` varchar(32)
 ,`DiaChi` varchar(50)
-,`UserName` varchar(20)
-,`PassWord` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -307,24 +330,6 @@ CREATE TABLE `v_hoso_admin` (
 ,`Role` varchar(5)
 ,`Email` varchar(32)
 ,`Address` varchar(50)
-,`UserName` varchar(20)
-,`PassWord` varchar(255)
-);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc đóng vai cho view `v_hoso_gv`
--- (See below for the actual view)
---
-CREATE TABLE `v_hoso_gv` (
-`Name` varchar(50)
-,`Sex` varchar(5)
-,`Role` varchar(5)
-,`Email` varchar(32)
-,`Address` varchar(50)
-,`UserName` varchar(20)
-,`PassWord` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -339,8 +344,6 @@ CREATE TABLE `v_hoso_qt` (
 ,`Role` varchar(5)
 ,`Email` varchar(32)
 ,`Address` varchar(50)
-,`UserName` varchar(20)
-,`PassWord` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -359,7 +362,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_hoso`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_hoso`  AS  select `sinhvien`.`MaSV` AS `MaSV`,`sinhvien`.`TenSV` AS `TenSV`,`sinhvien`.`MaLop` AS `MaLop`,`sinhvien`.`GioiTinh` AS `GioiTinh`,`account`.`Role` AS `Role`,`sinhvien`.`SĐT` AS `SĐT`,`sinhvien`.`Email` AS `Email`,`sinhvien`.`DiaChi` AS `DiaChi`,`account`.`UserName` AS `UserName`,`account`.`PassWord` AS `PassWord` from (`sinhvien` join `account`) where `account`.`UserName` = `sinhvien`.`MaSV` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_hoso`  AS  select `sinhvien`.`MaSV` AS `MaSV`,`sinhvien`.`TenSV` AS `TenSV`,`sinhvien`.`MaLop` AS `MaLop`,`sinhvien`.`GioiTinh` AS `GioiTinh`,`account`.`Role` AS `Role`,`sinhvien`.`Email` AS `Email`,`sinhvien`.`DiaChi` AS `DiaChi` from (`sinhvien` join `account`) where `account`.`UserName` = `sinhvien`.`MaSV` ;
 
 -- --------------------------------------------------------
 
@@ -368,16 +371,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_hoso_admin`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_hoso_admin`  AS  select `account`.`Name` AS `Name`,`account`.`Sex` AS `Sex`,`account`.`Role` AS `Role`,`account`.`Email` AS `Email`,`account`.`Address` AS `Address`,`account`.`UserName` AS `UserName`,`account`.`PassWord` AS `PassWord` from `account` where `account`.`Role` = 'ADMIN' ;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc cho view `v_hoso_gv`
---
-DROP TABLE IF EXISTS `v_hoso_gv`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_hoso_gv`  AS  select `account`.`Name` AS `Name`,`account`.`Sex` AS `Sex`,`account`.`Role` AS `Role`,`account`.`Email` AS `Email`,`account`.`Address` AS `Address`,`account`.`UserName` AS `UserName`,`account`.`PassWord` AS `PassWord` from `account` where `account`.`Role` = 'GV' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_hoso_admin`  AS  select `account`.`Name` AS `Name`,`account`.`Sex` AS `Sex`,`account`.`Role` AS `Role`,`account`.`Email` AS `Email`,`account`.`Address` AS `Address` from `account` where `account`.`Role` = 'ADMIN' ;
 
 -- --------------------------------------------------------
 
@@ -386,7 +380,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_hoso_qt`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_hoso_qt`  AS  select `account`.`Name` AS `Name`,`account`.`Sex` AS `Sex`,`account`.`Role` AS `Role`,`account`.`Email` AS `Email`,`account`.`Address` AS `Address`,`account`.`UserName` AS `UserName`,`account`.`PassWord` AS `PassWord` from `account` where `account`.`Role` = 'QL' ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_hoso_qt`  AS  select `account`.`Name` AS `Name`,`account`.`Sex` AS `Sex`,`account`.`Role` AS `Role`,`account`.`Email` AS `Email`,`account`.`Address` AS `Address` from `account` where `account`.`Role` = 'QL' ;
 
 --
 -- Chỉ mục cho các bảng đã đổ

@@ -7,6 +7,7 @@
     <script src="../js/easypiechart-data.js"></script>
     <script src="../js/bootstrap-datepicker.js"></script>
     <script src="../js/jv.js"></script>
+    <script src="../js/ADD.js"></script>
     <script>
         $(document).ready(function () {
             var chart1 = document.getElementById("line-chart").getContext("2d");

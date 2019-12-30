@@ -1,0 +1,15 @@
+.search {
+    width: 200px;
+}
+
+.input_search {
+    width: 100%;
+}
+
+.tk {
+    display: flex;
+}
+
+.year {
+    margin-left: 100px;
+}

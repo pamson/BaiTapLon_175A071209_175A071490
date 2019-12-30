@@ -1,5 +1,10 @@
 <?php
 include ('head.php');
+if (!isset($_SESSION['lv']) || ($_SESSION['lv'] != 'ADMIN'))
+{
+ header("Location:../dangnhap.php");
+exit();}
+
 ?>
 <?php
 include ("leftBody.php");
@@ -66,7 +71,13 @@ include ("leftBody.php");
     include ("headerLogin.php");
     ?>
     <main>
-    
+    <?php include ("HoSoADMIN.php")?>
+     <!-- Search form -->
+     <form class="form-inline md-form form-sm mt-0 search">
+         <i class="fas fa-search" aria-hidden="true"></i>
+         <input class="form-control form-control-sm ml-3 w-75 input_search" type="text" placeholder="Search"
+             aria-label="Search">
+    </form>
     <div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">

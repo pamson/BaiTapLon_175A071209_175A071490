@@ -23,6 +23,11 @@ include '../connect.php';
   <!--Css phan trang chủ-->
   <link rel="stylesheet" type="text/css" href="../css/util.css">
   <link rel="stylesheet" type="text/css" href="../css/k.css">
+  <!-- Search form -->
+  <link rel="stylesheet" href="../css/SEARCH.css">
+
+  <!--Form ADD-->
+  <link rel="stylesheet" href="../css/FormADD.css">
 </head>
 
 <body class="dark-edition">

@@ -15,7 +15,7 @@
             function myFunction() {
                 document.getElementById("information").style.display = "block";
             }
-</script>
+            </script>
       </div>
      
     

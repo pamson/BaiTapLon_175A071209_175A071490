@@ -1,5 +1,10 @@
 <?php
 include ('head.php');
+if (!isset($_SESSION['lv']) || ($_SESSION['lv'] != 'ADMIN'))
+{
+ header("Location:../dangnhap.php");
+exit();}
+
 ?>
 <?php
 include ("leftBody.php");
@@ -66,7 +71,48 @@ include ("leftBody.php");
     include ("headerLogin.php");
     ?>
     <main>
-    
+    <?php include ("HoSoADMIN.php")?>
+    <button class="ADD" id="add" onclick="ADD()">ADD</button>
+            <script>
+            function ADD() {
+                document.getElementById("ADD").style.display = "block";
+                document.getElementById("add").style.display = "none";
+            }
+            </script>
+            
+        <div class="card" id="ADD">
+
+        <h5 class="card-header info-color white-text text-center py-4">
+            <strong style="color:white;">Hello!</strong>
+        </h5>
+
+        
+        <div class="card-body px-lg-5">
+
+            <!-- Form -->
+            <form class="text-center" style="color: #757575;" action="#!">
+
+               
+                <div class="md-form mt-3">
+                    <input type="text" class="form-control">
+                    <label >Mã lớp</label>
+                </div>
+
+                
+                <div class="md-form">
+                    <input type="text"  class="form-control">
+                    <label >Mã giảng viên</label>
+                </div>
+
+                
+                <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">ADD</button>
+
+            </form>
+            <!-- Form -->
+
+            </div>
+
+        </div>
     <div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
@@ -76,16 +122,19 @@ include ("leftBody.php");
 							<tr class="table100-head">
 								<th class="lop1">STT</th>
 								<th class="lop2">Mã lớp</th>
-								<th class="lop3">Mã giảng viên</th>						
+								<th class="lop3">Mã giảng viên</th>	
+                                <td class="column4"></td>
+                                <td class="column5"></td>					
 								
 							</tr>
 						</thead>
 						<tbody>
-								<tr>
-									<td class="lop1"></td>
-									<td class="lop2"></td>
-									<td class="lop3"></td>
-									
+								<tr class="rowkhoa">
+									<td class="lop1">1</td>
+									<td class="lop2">59TH2</td>
+									<td class="lop3">KTDung</td>
+									<td class="column4 update_Khoa" onclick="ADD()"><i class="fas fa-pencil-alt"></i></td>
+                                    <td class="column5 remove_Khoa"><i class="fas fa-trash-alt"></i></td>
 									
                                 </tr>	
                                 					

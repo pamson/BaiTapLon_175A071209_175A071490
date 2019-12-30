@@ -1,6 +1,12 @@
 
 <?php
 include ('head.php');
+
+if (!isset($_SESSION['lv']) || ($_SESSION['lv'] != 'SV'))
+{
+ header("Location:../dangnhap.php");
+exit();}
+
 ?>
 <?php
 include ("leftBody.php");
@@ -35,11 +41,23 @@ include ("leftBody.php");
     <?php include ("HoSoSV.php")?>
    
   
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+   <div class="tk">
+    <!-- Search form -->
+    <form class="form-inline md-form form-sm mt-0 search">
+         <i class="fas fa-search" aria-hidden="true"></i>
+         <input class="form-control form-control-sm ml-3 w-75 input_search" type="text" id="hocki" name="HK"  placeholder="Semester search"
+             aria-label="Search">
     </form>
- 
+    <form class="form-inline md-form form-sm mt-0 search year">
+         <i class="fas fa-search" aria-hidden="true"></i>
+         <input class="form-control form-control-sm ml-3 w-75 input_search" type="text" id="year" name="y" onChange="getHK(this.value);" placeholder="Year search"
+             aria-label="Search">
+    </form>
+    </div>
+    <!-- đổ dữ liệu ra bảng-->
+    <?php 
+
+    ?>
 
     <div class="limiter">
 		<div class="container-table100">
@@ -64,21 +82,50 @@ include ("leftBody.php");
 							</tr>
 						</thead>
 						<tbody>
-								<tr>
-									<td class="Diem1"></td>
-									<td class="Diem2"></td>
-									<td class="Diem3"></td>
-									<td class="Diem4"></td>
-									<td class="Diem5"></td>
-                                    <td class="Diem6"></td>
-                                    <td class="Diem7"></td>
-									<td class="Diem8"></td>
-									<td class="Diem9"></td>
-                                    <td class="Diem10"></td>
-                                    <td class="Diem11"></td>
-									<td class="Diem12"></td>
+                            <?php
+                            
+                             $count = 1;
+                             $query ="SELECT v_diemsv.* FROM `v_diemsv` WHERE MaSV = '".$_SESSION['username'] ."'";
+                             //$sql ="SELECT v_diemsv.* FROM `v_diemsv`, ctmonhoc WHERE MaSV = '".$_SESSION['username'] . "' AND v_diemsv.MaMH = ctmonhoc.MaMH AND ctmonhoc.HK = ".$_GET['HK']." AND ctmonhoc.NamHoc = '". $_GET['y'] . "'" ;
+                             $result = mysqli_query($connect,$query);
+                             if(mysqli_num_rows($result)>0)
+                             {
+                                 while($row = mysqli_fetch_assoc($result))
+                                 {
+                                     ?>
+                                <tr>
+									<td class="Diem1"><?php echo $count++?></td>
+									<td class="Diem2"><?php echo $row['MaMH'];?></td>
+									<td class="Diem3"><?php echo $row['TenMH'];?></td>
+									<td class="Diem4"><?php echo $row['SoTC'];?></td>
+									<td class="Diem5"><?php echo $row['LanThi'];?></td>
+                                    <td class="Diem6"><?php echo $row['DanhGia'];?></td>
+                                    <td class="Diem7"><?php echo $row['TenSV'];?></td>
+									<td class="Diem8"><?php echo $row['MaSV'];?></td>
+									<td class="Diem9"><?php echo $row['QuaTrinh'];?></td>
+                                    <td class="Diem10"><?php echo $row['Thi'];?></td>
+                                    <td class="Diem11"><?php echo $row['TKHP'];?></td>
+									<td class="Diem12"><?php echo $row['Diemchu'];?></td>
                                 </tr>	
-                                					
+
+
+
+                                     <?php
+                                 }
+                             }
+                             else
+                             {
+                                 echo("NO! Value");
+                             }
+                            ?>
+							<script>
+                                    function getHK(x)
+                                        {
+                                            window.href="RoleSVDiem.php?text="+x;
+                                            
+                                        }
+                                        
+                            </script>		
 						</tbody>
 					</table>
 				</div>
