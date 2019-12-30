@@ -5,7 +5,7 @@
               <div class="row">
                   
                       <div id="img1" class="col-sm-5">
-                   <img  src="../images/thumb.jpg" alt="">
+                   <img  src="images/thumb.jpg" alt="">
                    <a href="#">Người Lính - Người Thầy-Người Nghệ Sĩ</a>
                   </div>
                   <div  class="col-sm-4">
@@ -37,7 +37,7 @@ Gặp mặt cán bộ viên chức nghỉ hưu năm 2019
                       </ol>
                   </div>
                   
-                  <div id="img" class="col-sm-3"><img src="../images/lichthi.jpg" alt="">
+                  <div id="img" class="col-sm-3"><img src="images/lichthi.jpg" alt="">
                     <p>Lịch thi tuyến sinh đào tạo trình độ .Trường Đại học Thủy lợi thông báo số 1119/TB-ĐHTL ngày 15/11/2019 về Lịch thi tuyển sinh đào tạo trình độ thạc sĩ năm 2019</p>
                      
                
@@ -45,7 +45,7 @@ Gặp mặt cán bộ viên chức nghỉ hưu năm 2019
                      
                         
               </div>
-                  <div id="img" class="col-sm-3"><img src="../images/lichhoc.jpg" alt="">
+                  <div id="img" class="col-sm-3"><img src="images/lichhoc.jpg" alt="">
                     <p>Lịch học ôn thi tuyển sinh .Trường Đại học Thủy lợi thông báo lịch học ôn thi tuyển sinh đào tạo trình độ thạc sĩ năm 2019</p>
                 
                         <a href="http://daotao.tlu.edu.vn/ftp/p3/Upload/Tuyensinh/2019/CaoHoc/Lich_On_thi_nam%202019.pdf" >Xem chi tiết lịch học</a>

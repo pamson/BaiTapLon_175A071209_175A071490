@@ -7,7 +7,7 @@
             <nav class="nav flex-column ">
                 <button style="width:100% ; text-align:left" name ="" class="nav-link " href="#"><i class="fas fa-home"></i>Trang chủ</button>
                 <a class="nav-link" href="#!" onclick="myFunction()"><i class="fas fa-users"></i>Hồ sơ</a>
-                <a class="nav-link" href="../TrangSauDangNhap/logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                <a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 
             </nav>
             </div>

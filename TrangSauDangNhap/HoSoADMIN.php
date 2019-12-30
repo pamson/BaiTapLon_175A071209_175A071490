@@ -1,5 +1,5 @@
 <?php 
-	include ("../connect.php");
+	
 	$sql = "SELECT * from account WHERE UserName = '". $_SESSION['username']."'";
 	$result = mysqli_query($connect,$sql);
 	if(mysqli_num_rows($result)>0)
