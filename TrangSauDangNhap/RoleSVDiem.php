@@ -21,7 +21,7 @@ include ("leftBody.php");
              </li>
                    
              <li class="nav-item active ">
-                 <a class="nav-link" href="RoleSVDIEM.php">
+                 <a class="nav-link" href="RoleSVDIEM.php?HK=&y=">
                    <i class="fas fa-table"></i>
                      <p>Điểm sinh viên</p>
                      </a>
@@ -41,19 +41,26 @@ include ("leftBody.php");
     <?php include ("HoSoSV.php")?>
    
   
-   <div class="tk">
+   
     <!-- Search form -->
-    <form class="form-inline md-form form-sm mt-0 search">
-         <i class="fas fa-search" aria-hidden="true"></i>
-         <input class="form-control form-control-sm ml-3 w-75 input_search" type="text" id="hocki" name="HK"  placeholder="Semester search"
-             aria-label="Search">
+    <form class="form-inline md-form form-sm mt-0 search" method="get">
+            <div class="tk">
+                
+               <div>
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <input class="form-control form-control-sm ml-3 w-75 input_search"  type="text" id="hocki" name="HK"  placeholder="Semester search"
+                    aria-label="Search" value="<?php echo $_GET["HK"]?>">      
+               </div>
+                <div class="year">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <input class="form-control form-control-sm ml-3 w-75 input_search"  type="text" id="year" name="y"  placeholder="Year search"
+                    aria-label="Search"  value="<?php echo $_GET["y"]?>">
+                </div>
+            </div>
+            <input type="submit" value="tìm kiếm" class="sb">
+            
     </form>
-    <form class="form-inline md-form form-sm mt-0 search year">
-         <i class="fas fa-search" aria-hidden="true"></i>
-         <input class="form-control form-control-sm ml-3 w-75 input_search" type="text" id="year" name="y" onChange="getHK(this.value);" placeholder="Year search"
-             aria-label="Search">
-    </form>
-    </div>
+    
     <!-- đổ dữ liệu ra bảng-->
     <?php 
 
@@ -86,8 +93,25 @@ include ("leftBody.php");
                             
                              $count = 1;
                              $query ="SELECT v_diemsv.* FROM `v_diemsv` WHERE MaSV = '".$_SESSION['username'] ."'";
-                             //$sql ="SELECT v_diemsv.* FROM `v_diemsv`, ctmonhoc WHERE MaSV = '".$_SESSION['username'] . "' AND v_diemsv.MaMH = ctmonhoc.MaMH AND ctmonhoc.HK = ".$_GET['HK']." AND ctmonhoc.NamHoc = '". $_GET['y'] . "'" ;
-                             $result = mysqli_query($connect,$query);
+                             $sql1 ="SELECT v_diemsv.* FROM `v_diemsv`, ctmonhoc WHERE MaSV = '".$_SESSION['username'] . "' AND v_diemsv.MaMH = ctmonhoc.MaMH AND ctmonhoc.HK = ".$_GET['HK'] ;
+                             $sql2 ="SELECT v_diemsv.* FROM `v_diemsv`, ctmonhoc WHERE MaSV = '".$_SESSION['username'] . "' AND v_diemsv.MaMH = ctmonhoc.MaMH AND ctmonhoc.NamHoc = '". $_GET['y'] . "'" ;
+                             $sql ="SELECT v_diemsv.* FROM `v_diemsv`, ctmonhoc WHERE MaSV = '".$_SESSION['username'] . "' AND v_diemsv.MaMH = ctmonhoc.MaMH AND ctmonhoc.HK = ".$_GET['HK']." AND ctmonhoc.NamHoc = '". $_GET['y'] . "'" ;
+                             if($_GET["HK"] == "" && $_GET["y"] == "")
+                             {
+                                $result = mysqli_query($connect,$query);
+                             }
+                             elseif($_GET["HK"] == $_GET["HK"] && $_GET["y"] == "")
+                             {
+                                $result = mysqli_query($connect,$sql1);
+                             }
+                             elseif($_GET["y"] == $_GET["y"] && $_GET["HK"] == "")
+                             {
+                                $result = mysqli_query($connect,$sql2);
+                             }
+                             else
+                             {
+                                $result = mysqli_query($connect,$sql);
+                             }
                              if(mysqli_num_rows($result)>0)
                              {
                                  while($row = mysqli_fetch_assoc($result))
@@ -118,14 +142,7 @@ include ("leftBody.php");
                                  echo("NO! Value");
                              }
                             ?>
-							<script>
-                                    function getHK(x)
-                                        {
-                                            window.href="RoleSVDiem.php?text="+x;
-                                            
-                                        }
-                                        
-                            </script>		
+								
 						</tbody>
 					</table>
 				</div>
