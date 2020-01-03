@@ -19,7 +19,7 @@ include ("leftBody.php");
                     </li>
                    
                     <li class="nav-item ">
-                        <a class="nav-link" href="RoleSVDIEM.php">
+                        <a class="nav-link" href="RoleSVDIEM.php?HK=&y=">
                         <i class="fas fa-table"></i>
                             <p>Điểm sinh viên</p>
                         </a>
