@@ -7,13 +7,19 @@
             <nav class="nav flex-column ">
                 <button style="width:100% ; text-align:left" name ="" class="nav-link " href="#"><i class="fas fa-home"></i>Trang chủ</button>
                 <a class="nav-link" href="#!" onclick="myFunction()"><i class="fas fa-users"></i>Hồ sơ</a>
-                <a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                <a onclick="logout()" id="logout" class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i>Logout</a>
 
             </nav>
             </div>
             <script>
             function myFunction() {
                 document.getElementById("information").style.display = "block";
+            }
+            function logout(){
+                var r = confirm("Bạn thật sự muốn thoát");
+                if (r == true) {
+                     window.location="logout.php";
+              }
             }
             </script>
       </div>
