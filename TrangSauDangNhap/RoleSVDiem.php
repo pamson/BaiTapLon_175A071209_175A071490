@@ -96,15 +96,15 @@ include ("leftBody.php");
                              $sql1 ="SELECT v_diemsv.* FROM `v_diemsv`, ctmonhoc WHERE MaSV = '".$_SESSION['username'] . "' AND v_diemsv.MaMH = ctmonhoc.MaMH AND ctmonhoc.HK = ".$_GET['HK'] ;
                              $sql2 ="SELECT v_diemsv.* FROM `v_diemsv`, ctmonhoc WHERE MaSV = '".$_SESSION['username'] . "' AND v_diemsv.MaMH = ctmonhoc.MaMH AND ctmonhoc.NamHoc = '". $_GET['y'] . "'" ;
                              $sql ="SELECT v_diemsv.* FROM `v_diemsv`, ctmonhoc WHERE MaSV = '".$_SESSION['username'] . "' AND v_diemsv.MaMH = ctmonhoc.MaMH AND ctmonhoc.HK = ".$_GET['HK']." AND ctmonhoc.NamHoc = '". $_GET['y'] . "'" ;
-                             if($_GET["HK"] == "" && $_GET["y"] == "")
+                             if(empty($_GET["HK"]) && empty($_GET["y"]))
                              {
                                 $result = mysqli_query($connect,$query);
                              }
-                             elseif($_GET["HK"] == $_GET["HK"] && $_GET["y"] == "")
+                             elseif(isset($_GET["HK"]) && empty($_GET["y"]))
                              {
                                 $result = mysqli_query($connect,$sql1);
                              }
-                             elseif($_GET["y"] == $_GET["y"] && $_GET["HK"] == "")
+                             elseif(empty($_GET["HK"]) && isset($_GET["y"]))
                              {
                                 $result = mysqli_query($connect,$sql2);
                              }
