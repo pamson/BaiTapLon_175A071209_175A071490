@@ -54,7 +54,7 @@ include ("leftBody.php");
         <div class="card-body px-lg-5">
 
             <!-- Form -->
-            <form class="text-center" style="color: #757575;" action="#!">
+            <form class="text-center" style="color: #757575;" >
 
                
                 <div class="md-form mt-3">
@@ -102,7 +102,7 @@ include ("leftBody.php");
                     <label >Address</label>
                 </div>
                 
-                <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">ADD</button>
+                <button name="ADD" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">ADD</button>
 
             </form>
             <!-- Form -->
@@ -134,21 +134,48 @@ include ("leftBody.php");
 							</tr>
 						</thead>
 						<tbody>
+                        <?php 
+
+                        CapNhat();
+
+                        ?>
+                        <?php
+                        function CapNhat()
+                        {
+                        include ("../connect.php");
+                        $count = 1;
+                        $sql = "SELECT * FROM account";
+                        $result = mysqli_query($connect,$sql);
+                        if(mysqli_num_rows($result) > 0)
+                        {
+                            while($row = mysqli_fetch_assoc($result))
+                            {
+
+                        ?>
 								<tr class="rowkhoa">
-									<td class="Diem1">1</td>
-									<td class="Diem2">175A071209</td>
-									<td class="Diem3">175A071204</td>
-									<td class="Diem4">175A071204</td>
-									<td class="Diem5">Null</td>
-                                    <td class="Diem6">Phạm Thế Sơn</td>
-                                    <td class="Use7">Nam</td>
-									<td class="Diem8">SV</td>
-									<td class="Diem9">SonPT72@wru.vn</td>
-                                    <td class="Diem10">Nam Định</td>
+									<td class="Diem1"><?php echo $count++?></td>
+									<td class="Diem2"><?php echo $row["UserName"] ?></td>
+									<td class="Diem3"><?php echo $row["PassWord"] ?></td>
+									<td class="Diem4"><?php echo $row["ConfirmPassword"] ?>4</td>
+									<td class="Diem5"><?php echo $row["verified"] ?></td>
+                                    <td class="Diem6"><?php echo $row["Name"] ?></td>
+                                    <td class="Use7"><?php echo $row["Sex"] ?></td>
+									<td class="Diem8"><?php echo $row["Role"] ?></td>
+									<td class="Diem9"><?php echo $row["Email"] ?></td>
+                                    <td class="Diem10"><?php echo $row["Address"] ?></td>
                                     <td class="lop5 update_Khoa" onclick="ADD()"><i class="fas fa-pencil-alt"></i></td>
                                     <td class="lop5 remove_Khoa"><i class="fas fa-trash-alt"></i></td>
                                 </tr>	
-                                					
+                        <?php 
+                             }
+                            }
+                         }
+                        ?>		
+                        <?php
+                          if(isset($_POST['ADD'])){
+                              CapNhat();
+                          }
+                        ?>	    
 						</tbody>
 					</table>
 				</div>
