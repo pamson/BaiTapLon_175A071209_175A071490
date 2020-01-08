@@ -120,7 +120,7 @@ include ("leftBody.php");
 					<table>
 						<thead>
 							<tr class="table100-head">
-								<th class="column1">STT</th>
+								<th class="column5">STT</th>
 								<th class="column2">Mã khoa</th>
 								<th class="column3">Tên khoa</th>
                                 
@@ -141,11 +141,12 @@ include ("leftBody.php");
                                 $makhoa=$r['MaKhoa'];
                                 $tenkhoa=$r['TenKhoa'];
                                 echo "<tr>";
-                                echo "<td>$i</td>";
-                                echo "<td>$makhoa</td>";
-                                echo "<td>$tenkhoa</td>";
-                                echo '<td name="update" class="lop5 update_Khoa" onclick="ADD()"><i class="fas fa-pencil-alt"></i></td>';
+                                echo "<td column1>$i</td>";
+                                echo "<td column2>$makhoa</td>";
+                                echo "<td column3> $tenkhoa</td>";
+                                echo "<td name='update' class='lop5 update_Khoa' onclick='ADD()'><i class='fas fa-pencil-alt'></i></td>";
                                 echo "<td  class='lop5 remove_Khoa'><a href='../TrangSauDangNhap/deletekhoa.php?id=$makhoa'><i class='fas fa-trash-alt'></i></a></td>";
+                                echo "</tr>";
                             }
                         }
                         ?>
