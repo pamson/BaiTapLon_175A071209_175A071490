@@ -204,6 +204,11 @@ tbody tr:hover {
     width: 20px;
 }
 
+.fa,
+.fas {
+    color: rgb(88, 87, 87);
+}
+
 @media screen and (max-width: 700px) {
     table {
         display: block;
