@@ -90,22 +90,22 @@ include ("leftBody.php");
         <div class="card-body px-lg-5">
 
             <!-- Form -->
-            <form class="text-center" style="color: #757575;" action="#!">
+            <form class="text-center" style="color: #757575;" method="POST" action="../TrangSauDangNhap/addkhoa.php" >
 
                
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name="makhoa" type="text" class="form-control">
                     <label >Mã khoa</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name="tenkhoa" type="text"  class="form-control">
                     <label >Tên khoa</label>
                 </div>
 
                 
-                <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">ADD</button>
+                <button name="ADD" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">ADD</button>
 
             </form>
             <!-- Form -->
@@ -123,20 +123,34 @@ include ("leftBody.php");
 								<th class="column1">STT</th>
 								<th class="column2">Mã khoa</th>
 								<th class="column3">Tên khoa</th>
-                                <td class="column4"></td>
-                                <td class="column5"></td>
+                                
+                                <th class="lop5"></th>
+                                <th class="lop5"></th>
 							</tr>
 						</thead>
 						<tbody>
-								<tr class="rowkhoa">
-									<td class="column1">1</td>
-									<td class="column2">TLA07</td>
-									<td class="column3">Công nghệ Thông tin</td>
-                                    <td class="column4 update_Khoa" onclick="ADD()"><i class="fas fa-pencil-alt"></i></td>
-                                    <td class="column5 remove_Khoa"><i class="fas fa-trash-alt"></i></td>
-									
-                                </tr>	
-											
+                        
+                        <?php
+                        
+                        $query="Select * from Khoa";
+                        $result=  mysqli_query($connect,$query);
+                        if(mysqli_num_rows($result)>0){
+                            $i=0;
+                            while($r=mysqli_fetch_assoc($result)){
+                                $i ++;
+                                $makhoa=$r['MaKhoa'];
+                                $tenkhoa=$r['TenKhoa'];
+                                echo "<tr>";
+                                echo "<td>$i</td>";
+                                echo "<td>$makhoa</td>";
+                                echo "<td>$tenkhoa</td>";
+                                echo '<td name="update" class="lop5 update_Khoa" onclick="ADD()"><i class="fas fa-pencil-alt"></i></td>';
+                                echo "<td  class='lop5 remove_Khoa'><a href='../TrangSauDangNhap/deletekhoa.php?id=$makhoa'><i class='fas fa-trash-alt'></i></a></td>";
+                            }
+                        }
+                        ?>
+               
+                        		
 						</tbody>
 					</table>
 				</div>
