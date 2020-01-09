@@ -36,7 +36,7 @@ include ("leftBody.php");
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="SinhVien.php">
+                        <a class="nav-link" href="SinhVien.php?class=">
                         <i class="fas fa-graduation-cap"></i>
                             <p>Sinh viên</p>
                         </a>
@@ -78,12 +78,7 @@ include ("leftBody.php");
                 document.getElementById("ADD").style.display = "block";
                 document.getElementById("add").style.display = "none";
             }
-            function update() {
-                
-                document.getElementById("ADD").style.display = "block";
-                document.getElementById("add").style.display = "none";
-               
-            }
+           
             </script>
             
         <div class="card" id="ADD">

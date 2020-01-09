@@ -36,7 +36,7 @@ include ("leftBody.php");
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="SinhVien.php">
+                        <a class="nav-link" href="SinhVien.php?class=">
                         <i class="fas fa-graduation-cap"></i>
                             <p>Sinh viên</p>
                         </a>
@@ -154,7 +154,7 @@ include ("leftBody.php");
                                 echo "<td>$makhoa</td>";
                                 echo "<td>$tenlop</td>";
                                 echo "<td>$siso</td>";
-                                echo "<td name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updatekhoa.php?id=$makhoa'><i class='fas fa-pencil-alt'></i></a></td>";
+                                echo "<td name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updatelop.php?id=$malop'><i class='fas fa-pencil-alt'></i></a></td>";
                                 echo "<td  class='lop5 remove_Khoa'><a href='../TrangSauDangNhap/deletelop.php?id=$malop'><i class='fas fa-trash-alt'></i></a></td>";
                             }
                         }

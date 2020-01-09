@@ -35,7 +35,7 @@ include ("leftBody.php");
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="SinhVien.php">
+                        <a class="nav-link" href="SinhVien.php?class=">
                         <i class="fas fa-graduation-cap"></i>
                             <p>Sinh viên</p>
                         </a>
@@ -73,9 +73,30 @@ include ("leftBody.php");
     <?php include ("HoSoADMIN.php")?>
     <!-- Search form -->
     <form class="form-inline md-form form-sm mt-0 search">
-         <i class="fas fa-search" aria-hidden="true"></i>
-         <input class="form-control form-control-sm ml-3 w-75 input_search" type="text" placeholder="Search"
-             aria-label="Search">
+         <!--Dropdown primary-->
+        <div class="dropdown">
+
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">Danh sách lớp</button>
+        <!--Menu-->
+        <div class="dropdown-menu dropdown-primary">
+        <?php
+            $sql2 = "SELECT * FROM lop";
+            $result1 = mysqli_query($connect,$sql2);
+            if(mysqli_num_rows($result1)>0)
+            {
+                while($row = mysqli_fetch_assoc($result1))
+                { 
+        ?> 
+        <a class="dropdown-item" id="class" href="../TrangSauDangNhap/SinhVien.php?class=<?php echo $row['MaLop']?>" name="class" ><?php echo $row["MaLop"]?></a>
+        <?php
+                }
+            }
+            
+        ?>
+        </div>
+        </div>
+        <!--/Dropdown primary-->
     </form>
     <div class="limiter">
 		<div class="container-table100">
@@ -96,18 +117,43 @@ include ("leftBody.php");
 							</tr>
 						</thead>
 						<tbody>
+                        <?php
+                            
+                            $count = 1;
+                            $sql = "SELECT * FROM sinhvien WHERE MaLop = '".$_GET['class']."'";
+                            $sql1 = "SELECT * FROM sinhvien";
+                            if(isset($_GET["class"]))
+                            {
+                                $result = mysqli_query($connect,$sql);
+                            }
+                            if(empty($_GET["class"]))
+                            {
+                                $result = mysqli_query($connect,$sql1);
+                            }
+                            if(mysqli_num_rows($result)>0)
+                            {
+                                while($row = mysqli_fetch_assoc($result))
+                                {
+                                    ?>
 								<tr>
-									<td class="column1"></td>
-									<td class="column2"></td>
-									<td class="column3"></td>
-									<td class="column4"></td>
-									<td class="column5"></td>
-                                    <td class="column6"></td>
-                                    <td class="column7"></td>
-									<td class="column8"></td>
+									<td class="column1"><?php echo $count++?></td>
+									<td class="column2"><?php echo $row['MaSV']?></td>
+									<td class="column3"><?php echo $row['TenSV']?></td>
+									<td class="column4"><?php echo $row['MaLop']?></td>
+									<td class="column5"><?php echo $row['GioiTinh']?></td>
+                                    <td class="column6"><?php echo $row['SĐT']?></td>
+                                    <td class="column7"><?php echo $row['Email']?></td>
+									<td class="column8"><?php echo $row['DiaChi']?></td>
 									
                                 </tr>	
-                                					
+                                <?php
+                                 }
+                             }
+                             else
+                             {
+                                 echo("NO! Value");
+                             }
+                            ?> 							
 						</tbody>
 					</table>
 				</div>
