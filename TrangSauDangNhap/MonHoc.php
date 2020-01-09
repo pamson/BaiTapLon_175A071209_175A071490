@@ -90,32 +90,32 @@ include ("leftBody.php");
         <div class="card-body px-lg-5">
 
             <!-- Form -->
-            <form class="text-center" style="color: #757575;" action="#!">
+            <form class="text-center" style="color: #757575;" action="addmonhoc.php" method='post'>
 
                
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='mamh' type="text" class="form-control">
                     <label >Mã môn học</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name='tenmh' type="text"  class="form-control">
                     <label >Tên môn học</label>
                 </div>
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='sotc' type="text" class="form-control">
                     <label >Số tín chỉ</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name='lt' type="text"  class="form-control">
                     <label >Lý thuyết</label>
                 </div>
 
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='th' type="text" class="form-control">
                     <label >Thực hành</label>
                 </div>
 
@@ -146,16 +146,34 @@ include ("leftBody.php");
 							</tr>
 						</thead>
 						<tbody>
-								<tr class="rowkhoa">
-									<td class="column1">1</td>
-									<td class="column2">CSE450</td>
-									<td class="column3">Công nghệ web</td>
-									<td class="column4">3</td>
-									<td class="column5">30</td>
-									<td class="column6">15</td>
-                                    <td class="column4 update_Khoa" onclick="ADD()"><i class="fas fa-pencil-alt"></i></td>
-                                    <td class="column5 remove_Khoa"><i class="fas fa-trash-alt"></i></td>
-                                </tr>	
+                        <?php
+                        
+                        $query="Select * from monhoc";
+                        $result=  mysqli_query($connect,$query);
+                        if(mysqli_num_rows($result)>0){
+                            $i=0;
+                            while($r=mysqli_fetch_assoc($result)){
+                                $i ++;
+                                $mamh=$r['MaMH'];
+                                $tenmh=$r['TenMH'];
+                                $sotc=$r['SoTC'];
+                                $lt=$r['LT'];
+                                 $th=$r['TH'];
+                               
+                                echo "<tr>";
+                                echo "<td class ='column1'>$i</td>";
+                                echo "<td class ='column2'>$mamh</td>";
+                                echo "<td class ='column3'>$tenmh</td>";
+                                echo "<td class ='column4'>$sotc</td>";
+                                echo "<td class ='column5'>$lt</td>";
+                                echo "<td class ='column6'>$th </td>";
+                               
+                                echo "<td class ='column4' name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updategv.php?id=$mamh'><i class='fas fa-pencil-alt'></i></a></td>";
+                                echo "<td  class='column5 remove_Khoa'><a href='../TrangSauDangNhap/deletegv.php?id=$mamh'><i class='fas fa-trash-alt'></i></a></td>";
+                            }
+                        }
+                        ?>			
+                                		
                                 					
 						</tbody>
 					</table>

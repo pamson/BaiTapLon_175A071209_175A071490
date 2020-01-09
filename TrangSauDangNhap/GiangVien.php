@@ -90,7 +90,7 @@ include ("leftBody.php");
         <div class="card-body px-lg-5">
 
             <!-- Form -->
-            <form method='post' class="text-center" style="color: #757575;" action="deletegv.php">
+            <form method='post' class="text-center" style="color: #757575;" action="addgv.php">
 
                
                 <div class="md-form mt-3">
@@ -172,20 +172,20 @@ include ("leftBody.php");
                                 $tengv=$r['TenGV'];
                                 $capbac=$r['CapBac'];
                                 $gioitinh=$r['GioiTinh'];
-                                $sodienthoai=$r['SĐT'];
+                                 $sodienthoai=$r['SĐT'];
                                 $email=$r['Email'];
                                 $diachi=$r['DiaChi'];
                                 echo "<tr>";
-                                echo "<td>$i</td>";
-                                echo "<td>$magv</td>";
-                                echo "<td>$tengv</td>";
-                                echo "<td>$capbac</td>";
-                                echo "<td>$gioitinh</td>";
-                                echo "<td>$sodienthoai </td>";
-                                echo "<td>$email</td>";
+                                echo "<td class ='column1'>$i</td>";
+                                echo "<td class ='column2'>$magv</td>";
+                                echo "<td class ='column3'>$tengv</td>";
+                                echo "<td class ='column4'>$capbac</td>";
+                                echo "<td class ='column5'>$gioitinh</td>";
+                                echo "<td class ='column6'>$sodienthoai </td>";
+                                echo "<td class ='column7'>$email</td>";
                                 echo "<td>$diachi</td>";
-                                echo "<td name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updategv.php?id=$magv'><i class='fas fa-pencil-alt'></i></a></td>";
-                                echo "<td  class='lop5 remove_Khoa'><a href='../TrangSauDangNhap/deletegv.php?id=$magv'><i class='fas fa-trash-alt'></i></a></td>";
+                                echo "<td class ='column4' name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updategv.php?id=$magv'><i class='fas fa-pencil-alt'></i></a></td>";
+                                echo "<td  class='column5 remove_Khoa'><a href='../TrangSauDangNhap/deletegv.php?id=$magv'><i class='fas fa-trash-alt'></i></a></td>";
                             }
                         }
                         ?>			
