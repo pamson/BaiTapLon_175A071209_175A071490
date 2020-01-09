@@ -18,7 +18,7 @@ include ("leftBody.php");
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="RoleGVLop.php">
+                        <a class="nav-link" href="RoleGVLop.php?class=">
                         <i class="fas fa-store-alt"></i>
                             <p>Lớp</p>
                         </a>
@@ -71,28 +71,19 @@ include ("leftBody.php");
         <!--Menu-->
         <div class="dropdown-menu dropdown-primary">
         <?php
-             $sql = "SELECT * FROM lop";
-             $result = mysqli_query($connect,$sql);
-             if(mysqli_num_rows($result)>0)
+             $sql2 = "SELECT * FROM lop";
+             $result1 = mysqli_query($connect,$sql2);
+             if(mysqli_num_rows($result1)>0)
              {
-                 while($row = mysqli_fetch_assoc($result))
+                 while($row = mysqli_fetch_assoc($result1))
                  { 
         ?> 
-        <a class="dropdown-item" id="class" name="class" onclick="getClass()"><?php echo $row["MaLop"]?></a>
+        <a class="dropdown-item" id="class" href="../TrangSauDangNhap/RoleGVLop.php?class=<?php echo $row['MaLop']?>" name="class" ><?php echo $row["MaLop"]?></a>
         <?php
                  }
             }
             
         ?>
-        <script>
-            function getClass()
-            {
-                let a = document.getElementById("class").value;
-                alert(a);
-
-}
-            }
-        </script>
         </div>
         </div>
         <!--/Dropdown primary-->
@@ -116,8 +107,16 @@ include ("leftBody.php");
                         <?php
                             
                             $count = 1;
-                            $sql = "SELECT * FROM lop WHERE MaLop = '59TH2'";
-                            $result = mysqli_query($connect,$sql);
+                            $sql = "SELECT * FROM lop WHERE MaLop = '".$_GET['class']."'";
+                            $sql1 = "SELECT * FROM lop";
+                            if(isset($_GET["class"]))
+                            {
+                                $result = mysqli_query($connect,$sql);
+                            }
+                            if(empty($_GET["class"]))
+                            {
+                                $result = mysqli_query($connect,$sql1);
+                            }
                             if(mysqli_num_rows($result)>0)
                             {
                                 while($row = mysqli_fetch_assoc($result))
