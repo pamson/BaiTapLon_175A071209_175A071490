@@ -163,7 +163,7 @@ include ("leftBody.php");
 									<td class="Diem8"><?php echo $row["Role"] ?></td>
 									<td class="Diem9"><?php echo $row["Email"] ?></td>
                                     <td class="Diem10"><?php echo $row["Address"] ?></td>
-                                    <td class="lop5 update_Khoa" onclick="ADD()"><i class="fas fa-pencil-alt"></i></td>
+                                    <td name = "update" class="lop5 update_Khoa" onclick="ADD()"><i class="fas fa-pencil-alt"></i></td>
                                     <td class="lop5 remove_Khoa"><i class="fas fa-trash-alt"></i></td>
                                 </tr>	
                         <?php 
@@ -172,9 +172,18 @@ include ("leftBody.php");
                          }
                         ?>		
                         <?php
-                          if(isset($_POST['ADD'])){
-                              CapNhat();
+                          if(isset($_POST['update'])){
+                              echo "haaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
                           }
+                        ?>
+                        <?php 
+                            function remove()
+                            {
+                                include ("../connect.php");
+                                $sql = "DELETE * FROM account WHERE  ";
+                                $result = mysqli_query($connect,$sql);
+                               
+                            }
                         ?>	    
 						</tbody>
 					</table>
