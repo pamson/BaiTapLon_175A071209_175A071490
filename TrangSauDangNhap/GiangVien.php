@@ -90,42 +90,42 @@ include ("leftBody.php");
         <div class="card-body px-lg-5">
 
             <!-- Form -->
-            <form class="text-center" style="color: #757575;" action="#!">
+            <form method='post' class="text-center" style="color: #757575;" action="deletegv.php">
 
                
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='magv' type="text" class="form-control">
                     <label >Mã giảng viên</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name='tengv' type="text"  class="form-control">
                     <label >Tên giảng viên</label>
                 </div>
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='capbac' type="text" class="form-control">
                     <label >Cấp bậc</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name='gioitinh' type="text"  class="form-control">
                     <label >Giới tính</label>
                 </div>
 
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='sodienthoai' type="text" class="form-control">
                     <label >Số điện thoại</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name='email' type="text"  class="form-control">
                     <label >Email</label>
                 </div>
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='diachi' type="text" class="form-control">
                     <label >Địa chỉ</label>
                 </div>
 
@@ -160,18 +160,35 @@ include ("leftBody.php");
 							</tr>
 						</thead>
 						<tbody>
-								<tr class="rowkhoa">
-									<td class="column1">1</td>
-									<td class="column2">KTDung</td>
-									<td class="column3">Kiều Tuấn Dũng</td>
-									<td class="column4">Thạc sĩ</td>
-									<td class="column5">Nam</td>
-                                    <td class="column6">23656</td>
-                                    <td class="column7">KTDung@wru.vn</td>
-									<td class="column8">Việt Nam</td>
-                                    <td class="column4 update_Khoa" onclick="ADD()"><i class="fas fa-pencil-alt"></i></td>
-                                    <td class="column5 remove_Khoa"><i class="fas fa-trash-alt"></i></td>
-                                </tr>	
+                        <?php
+                        
+                        $query="Select * from giangvien";
+                        $result=  mysqli_query($connect,$query);
+                        if(mysqli_num_rows($result)>0){
+                            $i=0;
+                            while($r=mysqli_fetch_assoc($result)){
+                                $i ++;
+                                $magv=$r['MaGV'];
+                                $tengv=$r['TenGV'];
+                                $capbac=$r['CapBac'];
+                                $gioitinh=$r['GioiTinh'];
+                                $sodienthoai=$r['SĐT'];
+                                $email=$r['Email'];
+                                $diachi=$r['DiaChi'];
+                                echo "<tr>";
+                                echo "<td>$i</td>";
+                                echo "<td>$magv</td>";
+                                echo "<td>$tengv</td>";
+                                echo "<td>$capbac</td>";
+                                echo "<td>$gioitinh</td>";
+                                echo "<td>$sodienthoai </td>";
+                                echo "<td>$email</td>";
+                                echo "<td>$diachi</td>";
+                                echo "<td name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updategv.php?id=$magv'><i class='fas fa-pencil-alt'></i></a></td>";
+                                echo "<td  class='lop5 remove_Khoa'><a href='../TrangSauDangNhap/deletegv.php?id=$magv'><i class='fas fa-trash-alt'></i></a></td>";
+                            }
+                        }
+                        ?>			
                                 					
 						</tbody>
 					</table>
