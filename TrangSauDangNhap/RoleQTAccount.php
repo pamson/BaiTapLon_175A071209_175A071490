@@ -54,51 +54,48 @@ include ("leftBody.php");
         <div class="card-body px-lg-5">
 
             <!-- Form -->
-            <form class="text-center" style="color: #757575;" >
+            <form  method="POST" class="text-center" style="color: #757575;" action="../TrangSauDangNhap/addRoleQTAccount.php">
 
                
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='username' type="text" class="form-control">
                     <label >UserName</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name='password' type="text"  class="form-control">
                     <label >Password</label>
                 </div>
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='confirmpassword' type="text" class="form-control">
                     <label >Confirm Password</label>
                 </div>
 
                 
-                <div class="md-form">
-                    <input type="text"  class="form-control">
-                    <label >Verified</label>
-                </div>
+                
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='name' type="text" class="form-control">
                     <label >Name</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name='sex' type="text"  class="form-control">
                     <label >Sex</label>
                 </div>
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='role' type="text" class="form-control">
                     <label >Role</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name='email' type="text"  class="form-control">
                     <label >Email</label>
                 </div>
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name='address' type="text"  class="form-control">
                     <label >Address</label>
                 </div>
                 
@@ -136,53 +133,36 @@ include ("leftBody.php");
 						<tbody>
                         <?php 
 
-                        CapNhat();
-
-                        ?>
-                        <?php
-                        function CapNhat()
-                        {
-                        include ("../connect.php");
-                        $count = 1;
-                        $sql = "SELECT * FROM account";
-                        $result = mysqli_query($connect,$sql);
-                        if(mysqli_num_rows($result) > 0)
-                        {
-                            while($row = mysqli_fetch_assoc($result))
-                            {
-
-                        ?>
-								<tr class="rowkhoa">
-									<td class="Diem1"><?php echo $count++?></td>
-									<td class="Diem2"><?php echo $row["UserName"] ?></td>
-									<td class="Diem3"><?php echo $row["PassWord"] ?></td>
-									<td class="Diem4"><?php echo $row["ConfirmPassword"] ?>4</td>
-									<td class="Diem5"><?php echo $row["verified"] ?></td>
-                                    <td class="Diem6"><?php echo $row["Name"] ?></td>
-                                    <td class="Use7"><?php echo $row["Sex"] ?></td>
-									<td class="Diem8"><?php echo $row["Role"] ?></td>
-									<td class="Diem9"><?php echo $row["Email"] ?></td>
-                                    <td class="Diem10"><?php echo $row["Address"] ?></td>
-                                    <td name = "update" class="lop5 update_Khoa" onclick="ADD()"><i class="fas fa-pencil-alt"></i></td>
-                                    <td class="lop5 remove_Khoa"><i class="fas fa-trash-alt"></i></td>
-                                </tr>	
-                        <?php 
-                             }
-                            }
-                         }
-                        ?>		
-                        <?php
-                          if(isset($_POST['update'])){
-                              echo "haaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-                          }
-                        ?>
-                        <?php 
-                            function remove()
-                            {
-                                include ("../connect.php");
-                                $sql = "DELETE * FROM account WHERE  ";
-                                $result = mysqli_query($connect,$sql);
-                               
+                            $query="Select * from account";
+                            $result=  mysqli_query($connect,$query);
+                            if(mysqli_num_rows($result)>0){
+                                $i=0;
+                                while($r=mysqli_fetch_assoc($result)){
+                                    $i ++;
+                                    $username=$r['UserName'];
+                                    $password=$r['PassWord'];
+                                    $ConfirmPassword=$r['ConfirmPassword'];
+                                    $verified=$r['verified'];
+                                    $name=$r['Name'];
+                                    $sex=$r['Sex'];
+                                    $role=$r['Role'];
+                                    $email=$r['Email'];
+                                    $address=$r['Address'];
+                                    echo "<tr>";
+                                    echo "<td class='Diem1'>$i</td>";
+                                    echo "<td class='Diem2'>$username</td>";
+                                    echo "<td class='Diem3'>$password</td>";
+                                    echo "<td class='Diem4'>$ConfirmPassword</td>";
+                                    echo "<td class='Diem5'>$verified</td>";
+                                    echo "<td class='Diem6'>$name</td>";
+                                    echo "<td class='Diem7'>$sex</td>";
+                                    echo "<td class='Diem8'>$role</td>";
+                                    echo "<td class='Diem9'>$email</td>";
+                                    echo "<td class='Diem10'>$address</td>";
+                                    echo "<td name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updateRoleQTAccount.php?id=$username'><i class='fas fa-pencil-alt'></i></a></td>";
+                                    echo "<td  class='lop5 remove_Khoa'><a href='../TrangSauDangNhap/deleteRoleQTAccount.php?id=$username'><i class='fas fa-trash-alt'></i></a></td>";
+                                    echo "</tr>";
+                                }
                             }
                         ?>	    
 						</tbody>

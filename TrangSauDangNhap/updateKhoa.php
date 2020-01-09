@@ -104,29 +104,7 @@ include ("leftBody.php");
 
                 
                 <button name="update" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">UPDATE</button>
-                <?php 
-                    if(isset($_POST['update']))
-                    {
-                       if(isset($_POST['makhoa']) && isset($_POST['tenkhoa']))
-                       {
-                        $update = "UPDATE khoa SET MaKhoa = '".$_POST['makhoa']."', TenKhoa = '".$_POST['tenkhoa']."' WHERE MaKhoa ='".$_GET['id']."' ";
-                        if( mysqli_query($connect,$update))
-                        {
-                          header('location:../TrangSauDangNhap/Khoa.php');
-                        }
-                        else 
-                        {
-                         echo "Mời bạn kiểm tra lại";
-                        }
-                       }
-                       if(empty($_POST['makhoa']) && empty($_POST['tenkhoa']))
-                       {
-                           echo "Mời bạn nhập đầy đủ thông tin";
-                       }
-                        
-                    }
-
-                ?>
+                
             </form>
             
             <!-- Form -->

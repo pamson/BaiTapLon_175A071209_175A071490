@@ -6,7 +6,7 @@
            $update = "UPDATE khoa SET MaKhoa = '".$_POST['makhoa']."', TenKhoa = '".$_POST['tenkhoa']."' WHERE MaKhoa ='".$_GET['id']."' ";
               
 
-                 if(empty($_POST['makhoa']) && empty($_POST['tenkhoa']))
+                 if(empty($_POST['makhoa']) || empty($_POST['tenkhoa']))
                     {
                            echo "Mời bạn nhập đầy đủ thông tin .<a href='javascript: history.go(-1)'>Trở lại</a>"; 
                            exit();
