@@ -83,14 +83,32 @@ include ("leftBody.php");
 							</tr>
 						</thead>
 						<tbody>
-								<tr>
-									<td class="column1"></td>
-									<td class="column2"></td>
-									<td class="column3"></td>
-									<td class="column4"></td>
-									<td class="column5"></td>
-									<td class="column6"></td>
-                                </tr>	
+                        <?php
+                        
+                        $query="Select * from monhoc";
+                        $result=  mysqli_query($connect,$query);
+                        if(mysqli_num_rows($result)>0){
+                            $i=0;
+                            while($r=mysqli_fetch_assoc($result)){
+                                $i ++;
+                                $mamh=$r['MaMH'];
+                                $tenmh=$r['TenMH'];
+                                $sotc=$r['SoTC'];
+                                $lt=$r['LT'];
+                                 $th=$r['TH'];
+                               
+                                echo "<tr>";
+                                echo "<td class ='column1'>$i</td>";
+                                echo "<td class ='column2'>$mamh</td>";
+                                echo "<td class ='column3'>$tenmh</td>";
+                                echo "<td class ='column4'>$sotc</td>";
+                                echo "<td class ='column5'>$lt</td>";
+                                echo "<td class ='column6'>$th </td>";
+                               
+                               
+                            }
+                        }
+                        ?>			
                                 					
 						</tbody>
 					</table>
