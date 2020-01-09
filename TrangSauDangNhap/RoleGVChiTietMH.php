@@ -18,7 +18,7 @@ include ("leftBody.php");
                     </li>
 
                     <li class="nav-item ">
-                        <a class="nav-link" href="RoleGVLop.php">
+                        <a class="nav-link" href="RoleGVLop.php?class=">
                         <i class="fas fa-store-alt"></i>
                             <p>Lớp</p>
                         </a>
