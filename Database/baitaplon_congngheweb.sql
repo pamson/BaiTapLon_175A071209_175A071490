@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 30, 2019 lúc 10:20 AM
+-- Thời gian đã tạo: Th1 10, 2020 lúc 11:33 AM
 -- Phiên bản máy phục vụ: 10.4.6-MariaDB
 -- Phiên bản PHP: 7.3.8
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `id12089624_btl`
+-- Cơ sở dữ liệu: `baitaplon_congngheweb`
 --
 
 DELIMITER $$
@@ -40,7 +40,7 @@ DELIMITER ;
 CREATE TABLE `account` (
   `UserName` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `PassWord` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ConfirmPassword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'xác nhập lại password',
+  `ConfirmPassword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'xác nhập lại password',
   `verified` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Sex` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -54,11 +54,10 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`UserName`, `PassWord`, `ConfirmPassword`, `verified`, `Name`, `Sex`, `Role`, `Email`, `Address`) VALUES
-('175A071209', '175A071204', '175A071204', NULL, 'Phạm Thế Sơn', 'Nam', 'SV', 'Pamson@gmail.com', 'Nam Định'),
-('175A071490', '175A071490', '175A071490', NULL, 'Đỗ Cảnh Dương', 'Nam', 'SV', 'DuongDo@gmail.com', 'Nam Định'),
-('ADMIN', '1', '1', NULL, 'Phạm Thế Sơn', 'Nam', 'ADMIN', 'PamSon@gmail.com', 'Nam Định'),
-('KTDung', '1', '1', NULL, 'kiều Tuấn Dũng', 'Nam', 'GV', 'KTDung@wru.vn', 'Việt Nam'),
-('QT', '1', '1', NULL, 'Phạm Thế Sơn', 'Nam', 'QL', 'PamSon@gmail.com', 'Nam Định');
+('175A071209', '$2y$10$L/b47LCLihrt7rIzwv5Hqu33DDKnCOXbNghgVz2npQpxcaDON34.W', NULL, NULL, 'Phạm Thế  SƠn', 'Nam', 'SV', 'buinhuhoa199@gmail.com', 'Nam Định'),
+('ADMIN', '$2y$10$.x2cVUvxwxDxwFlnV9mIr.aqzJnv3nIXGwTK2syyuMvFXJtLdSBWi', NULL, NULL, 'Phạm Thế  SƠn', 'Nam', 'ADMIN', 'buinhuhoa199@gmail.com', 'Nam Định'),
+('KTDung', '$2y$10$SEooyovqTIeAhbGlIuw0iOuaoVqhw0YGwpOPb6irMiVAr22IEpTa6', NULL, NULL, 'Kiều Tuấn Dũng', 'Nam', 'GV', 'KTDung@wru.vn', 'Việt Nam'),
+('QT', '$2y$10$69hkkwyADFpQhnMdEfSmi..jVMxXsmnk3XVSOMDxvoR71vEqMb..S', NULL, NULL, 'Đỗ Cảnh Dương', 'nam', 'QL', 'Duong@do.com', 'Nam Định');
 
 -- --------------------------------------------------------
 
@@ -78,7 +77,8 @@ CREATE TABLE `ctmonhoc` (
 --
 
 INSERT INTO `ctmonhoc` (`MaLop`, `MaMH`, `HK`, `NamHoc`) VALUES
-('59TH2', 'CSE450', 1, '2018-2019'),
+('59TH1', 'CSE488', 1, '2018-2019'),
+('59TH2', 'CSE450', 2, '2018-2019'),
 ('59TH2', 'CSE488', 1, '2018-2019');
 
 -- --------------------------------------------------------
@@ -105,14 +105,28 @@ CREATE TABLE `diemsv` (
 --
 
 INSERT INTO `diemsv` (`MaMH`, `SoTC`, `LanHoc`, `LanThi`, `DanhGia`, `MaSV`, `QuaTrinh`, `Thi`, `TKHP`, `Diemchu`) VALUES
-('CSE450', 3, 1, 1, 'Đạt', '175A071209', 8.5, 7.5, 7.9, 'B'),
-('CSE488', 3, 1, 1, 'Đạt', '175A071209', 7.5, 7.5, 7.5, 'B');
+('CSE450', 3, 1, 1, 'Đạt', '175A071209', 8, 9, 8.6, 'A'),
+('CSE488', 3, 1, 1, 'Đạt', '175A071209', 7.5, 8, 7.8, 'B');
 
 --
 -- Bẫy `diemsv`
 --
 DELIMITER $$
 CREATE TRIGGER `Insert_diemSV` BEFORE INSERT ON `diemsv` FOR EACH ROW SET NEW.TKHP = NEW.QuaTrinh*0.4 + NEW.Thi*0.6,
+NEW.Diemchu = CASE
+when NEW.TKHP >= 4 AND NEW.TKHP < 5.5 then "D" 
+when  NEW.TKHP >= 5.5 AND NEW.TKHP < 7 then "C"
+when  NEW.TKHP >= 7 AND NEW.TKHP < 8.5 then "B"
+when  NEW.TKHP >= 8.5 AND NEW.TKHP < 10 then "A"
+else "F"
+END, NEW.DanhGia = CASE
+WHEN NEW.TKHP >= 4 THEN "Đạt"
+ELSE "Không đạt"
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `update_diemsv` BEFORE UPDATE ON `diemsv` FOR EACH ROW SET NEW.TKHP = NEW.QuaTrinh*0.4 + NEW.Thi*0.6,
 NEW.Diemchu = CASE
 when NEW.TKHP >= 4 AND NEW.TKHP < 5.5 then "D" 
 when  NEW.TKHP >= 5.5 AND NEW.TKHP < 7 then "C"
@@ -181,7 +195,9 @@ CREATE TABLE `khoa` (
 --
 
 INSERT INTO `khoa` (`MaKhoa`, `TenKhoa`) VALUES
-('TLA07', 'Công Nghệ Thông Tin');
+('sfsdf', 'gdfgdf'),
+('Son', 'con chó'),
+('TLA07', 'Công nghệ thông tin');
 
 -- --------------------------------------------------------
 
@@ -227,7 +243,7 @@ CREATE TABLE `monhoc` (
 --
 
 INSERT INTO `monhoc` (`MaMH`, `TenMH`, `SoTC`, `LT`, `TH`) VALUES
-('CSE450', 'Lập trình nâng cao', 3, 30, 15),
+('CSE450', 'Lập trình nâng cao', 3, 34, 22),
 ('CSE488', 'Công nghệ Web', 3, 35, 30);
 
 -- --------------------------------------------------------
@@ -240,6 +256,14 @@ CREATE TABLE `phancong_gv_lop` (
   `MaLop` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `MaGV` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `phancong_gv_lop`
+--
+
+INSERT INTO `phancong_gv_lop` (`MaLop`, `MaGV`) VALUES
+('59TH1', 'KTdung'),
+('59TH2', 'KTDung');
 
 -- --------------------------------------------------------
 
@@ -262,8 +286,8 @@ CREATE TABLE `sinhvien` (
 --
 
 INSERT INTO `sinhvien` (`MaSV`, `TenSV`, `MaLop`, `GioiTinh`, `SĐT`, `Email`, `DiaChi`) VALUES
-('175A071209', 'Phạm Thế Sơn', '59TH2', 'Nam', '45454', 'Pamson@gmail.com', 'Nam Định'),
-('175A071490', 'Đỗ Cảnh Dương', '59TH2', 'Nam', '121545', 'DuongDo@gmail.com', 'Nam Định');
+('175A0712045', 'Đỗ Cảnh Dương', '59TH2', 'Nam', '3423', 'Duong@wru.vn', 'Nam Định'),
+('175A071209', 'Phạm Thế Sơn', '59TH2', 'Nam', '2332', 'PamSon@gmail.com', 'Nam Định');
 
 --
 -- Bẫy `sinhvien`
@@ -349,6 +373,27 @@ CREATE TABLE `v_hoso_qt` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc đóng vai cho view `v_test`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_test` (
+`MaMH` varchar(20)
+,`TenMH` varchar(50)
+,`SoTC` int(11)
+,`LanThi` tinyint(4)
+,`DanhGia` varchar(10)
+,`TenSV` varchar(50)
+,`MaSV` varchar(30)
+,`MaLop` varchar(30)
+,`QuaTrinh` float
+,`Thi` float
+,`TKHP` float
+,`Diemchu` varchar(3)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc cho view `v_diemsv`
 --
 DROP TABLE IF EXISTS `v_diemsv`;
@@ -381,6 +426,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `v_hoso_qt`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_hoso_qt`  AS  select `account`.`Name` AS `Name`,`account`.`Sex` AS `Sex`,`account`.`Role` AS `Role`,`account`.`Email` AS `Email`,`account`.`Address` AS `Address` from `account` where `account`.`Role` = 'QL' ;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc cho view `v_test`
+--
+DROP TABLE IF EXISTS `v_test`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_test`  AS  select `diemsv`.`MaMH` AS `MaMH`,`monhoc`.`TenMH` AS `TenMH`,`diemsv`.`SoTC` AS `SoTC`,`diemsv`.`LanThi` AS `LanThi`,`diemsv`.`DanhGia` AS `DanhGia`,`sinhvien`.`TenSV` AS `TenSV`,`diemsv`.`MaSV` AS `MaSV`,`sinhvien`.`MaLop` AS `MaLop`,`diemsv`.`QuaTrinh` AS `QuaTrinh`,`diemsv`.`Thi` AS `Thi`,`diemsv`.`TKHP` AS `TKHP`,`diemsv`.`Diemchu` AS `Diemchu` from ((`monhoc` join `sinhvien`) join `diemsv`) where `diemsv`.`MaMH` = `monhoc`.`MaMH` and `sinhvien`.`MaSV` = `diemsv`.`MaSV` ;
 
 --
 -- Chỉ mục cho các bảng đã đổ
