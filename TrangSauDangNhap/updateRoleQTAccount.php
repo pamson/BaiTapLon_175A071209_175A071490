@@ -35,7 +35,7 @@ include ("leftBody.php");
     include ("headerLogin.php");
     ?>
     <main>
-    <?php include ("HoSoADMIN.php")?>
+    <?php include ("HoSoQT.php")?>
     
         <div class="card" id="ADD" style="display:block;">
 
