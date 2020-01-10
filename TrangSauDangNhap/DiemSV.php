@@ -55,7 +55,7 @@ include ("leftBody.php");
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="DiemSV.php?class=">
+                        <a class="nav-link" href="DiemSV.php?class=&lopmh=">
                         <i class="fas fa-table"></i>
                             <p>Điểm sinh viên</p>
                         </a>
@@ -89,7 +89,7 @@ include ("leftBody.php");
                 while($row = mysqli_fetch_assoc($result1))
                 { 
         ?> 
-        <a class="dropdown-item" id="class" href="../TrangSauDangNhap/DiemSV.php?class=<?php echo $row['MaMH']?>" name="class" ><?php echo $row["MaMH"]?></a>
+        <a class="dropdown-item" id="class" href="../TrangSauDangNhap/DiemSV.php?lopmh=&class=<?php echo $row['MaMH']?>" name="class" ><?php echo $row["MaMH"]?></a>
         <?php
                 }
             }
@@ -113,7 +113,7 @@ include ("leftBody.php");
                 while($row = mysqli_fetch_assoc($result1))
                 { 
         ?> 
-        <a class="dropdown-item" id="class" href="../TrangSauDangNhap/DiemSV.php?lopmh=<?php echo $row['MaLop']?>" name="lopmh" ><?php echo $row["MaLop"]?></a>
+        <a class="dropdown-item" id="class" href="../TrangSauDangNhap/DiemSV.php?class=&lopmh=<?php echo $row['MaLop']?>" name="lopmh" ><?php echo $row["MaLop"]?></a>
         <?php
                 }
             }
@@ -149,13 +149,18 @@ include ("leftBody.php");
                         <?php
                             
                             $count = 1;
-                            $sql = "SELECT * FROM V_DiemSV WHERE MaMH = '".$_GET['class']."'";
-                            $sql1 = "SELECT * FROM V_DiemSV";
-                            if(isset($_GET["class"]))
+                            $sql = "SELECT * FROM V_test WHERE MaLop = '".$_GET['lopmh']."'";
+                            $sql1 = "SELECT * FROM V_test";
+                            $sql2 = "SELECT * FROM V_test WHERE MaMH = '".$_GET['class']."'";
+                            if(isset($_GET["lopmh"]) && empty($_GET['class']) )
                             {
                                 $result = mysqli_query($connect,$sql);
                             }
-                            if(empty($_GET["class"]))
+                            if(isset($_GET["class"]) && empty($_GET["lopmh"]))
+                            {
+                                $result = mysqli_query($connect,$sql2);
+                            }
+                            if(empty($_GET["lopmh"]) && empty($_GET['class']))
                             {
                                 $result = mysqli_query($connect,$sql1);
                             }

@@ -32,7 +32,7 @@ include ("leftBody.php");
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="RoleGVMonHoc.php">
+                        <a class="nav-link" href="RoleGVMonHoc.php?class=">
                         <i class="fas fa-book"></i>
                             <p>Môn học</p>
                         </a>
@@ -170,7 +170,7 @@ include ("leftBody.php");
                                 echo "<td class ='column6'>$sodienthoai </td>";
                                 echo "<td class ='column7'>$email</td>";
                                 echo "<td>$diachi</td>";
-                                echo "<td class ='column4' name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updategv.php?id=$masv'><i class='fas fa-pencil-alt'></i></a></td>";
+                                echo "<td class ='column4' name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updateRoleGVSinhVien.php?id=$masv'><i class='fas fa-pencil-alt'></i></a></td>";
                                 echo "<td  class='column5 remove_Khoa'><a href='../TrangSauDangNhap/deletesinhvien.php?id=$masv'><i class='fas fa-trash-alt'></i></a></td>";
                             }
                         }

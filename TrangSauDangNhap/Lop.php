@@ -55,7 +55,7 @@ include ("leftBody.php");
                     </li>
 
                     <li class="nav-item ">
-                        <a class="nav-link" href="DiemSV.php?class=">
+                        <a class="nav-link" href="DiemSV.php?class=&lopmh=">
                         <i class="fas fa-table"></i>
                             <p>Điểm sinh viên</p>
                         </a>

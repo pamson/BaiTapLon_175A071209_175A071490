@@ -31,7 +31,7 @@ include ("leftBody.php");
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="RoleGVMonHoc.php">
+                        <a class="nav-link" href="RoleGVMonHoc.php?class=">
                         <i class="fas fa-book"></i>
                             <p>Môn học</p>
                         </a>
@@ -71,7 +71,7 @@ include ("leftBody.php");
         <!--Menu-->
         <div class="dropdown-menu dropdown-primary">
         <?php
-             $sql2 = "SELECT * FROM lop";
+             $sql2 = "SELECT * FROM phancong_gv_lop WHERE MaGV = '".$_SESSION['username']."'";
              $result1 = mysqli_query($connect,$sql2);
              if(mysqli_num_rows($result1)>0)
              {

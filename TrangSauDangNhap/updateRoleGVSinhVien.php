@@ -4,19 +4,20 @@ if (!isset($_SESSION['lv']) || ($_SESSION['lv'] != 'GV'))
 {
  header("Location:../dangnhap.php");
 exit();}
+
 ?>
 <?php
 include ("leftBody.php");
 ?>
 <div class="sidebar-wrapper">
         <ul class="nav menu">
-                    <li class="nav-item   ">
+        <li class="nav-item   ">
                         <a class="nav-link" href="RoleGiangVien.php">
                         <i class="fas fa-home"></i>
                             <p>Trang chủ</p>
                         </a>
                     </li>
-
+                    
                     <li class="nav-item ">
                         <a class="nav-link" href="RoleGVLop.php?class=">
                         <i class="fas fa-store-alt"></i>
@@ -24,19 +25,19 @@ include ("leftBody.php");
                         </a>
                     </li>
                     
-                    <li class="nav-item ">
+                    <li class="nav-item active">
                         <a class="nav-link" href="RoleGVSinhVien.php">
                         <i class="fas fa-graduation-cap"></i>
                             <p>Sinh viên</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="RoleGVMonHoc.php?class=">
+                        <a class="nav-link" href="RoleGVMonHoc.php">
                         <i class="fas fa-book"></i>
                             <p>Môn học</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="RoleGVChiTietMH.php">
                         <i class="fas fa-book-open"></i>
                             <p>Chi tiết môn học</p>
@@ -60,16 +61,9 @@ include ("leftBody.php");
     include ("headerLogin.php");
     ?>
     <main>
-    <?php include ("HoSoGV.php")?>
-    <button class="ADD" id="add" onclick="ADD()">ADD</button>
-            <script>
-            function ADD() {
-                document.getElementById("ADD").style.display = "block";
-                document.getElementById("add").style.display = "none";
-            }
-            </script>
-            
-        <div class="card" id="ADD">
+    <?php include ("HoSoADMIN.php")?>
+    
+        <div class="card" id="ADD" style="display:block;">
 
         <h5 class="card-header info-color white-text text-center py-4">
             <strong style="color:white;">Hello!</strong>
@@ -79,73 +73,60 @@ include ("leftBody.php");
         <div class="card-body px-lg-5">
 
             <!-- Form -->
-            <form class="text-center" style="color: #757575;" action="#!">
+            <form class="text-center" style="color: #757575;" method="POST" action="../TrangSauDangNhap/xulyupdateRoleGVSinhVien.php?id=<?php echo $_GET['id']?>" >
 
-               
+               <?php 
+                    $sql = "SELECT * FROM sinhvien WHERE MaSV ='".$_GET['id']."'";
+                    $result = mysqli_query($connect,$sql);
+                    $row = mysqli_fetch_assoc($result);
+                    
+               ?>
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='masv' type="text" class="form-control" value="<?php echo $row['MaSV']?>">
+                    <label >Mã sinh viên</label>
+                </div>
+
+                
+                <div class="md-form">
+                    <input name='tensv' type="text"  class="form-control" value="<?php echo $row['TenSV']?>">
+                    <label >Tên sinh viên</label>
+                </div>
+                <div class="md-form mt-3">
+                    <input name='malop' type="text" class="form-control" value="<?php echo $row['MaLop']?>">
                     <label >Mã lớp</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
-                    <label >Mã môn học</label>
+                    <input name='gioitinh' type="text"  class="form-control" value="<?php echo $row['GioiTinh']?>">
+                    <label >Giới tính</label>
+                </div>
+                <div class="md-form">
+                    <input name='sodienthoai' type="text"  class="form-control" value="<?php echo $row['SĐT']?>">
+                    <label >Số điện thoại</label>
                 </div>
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
-                    <label >Học kì</label>
+                    <input name='email' type="text" class="form-control" value="<?php echo $row['Email']?>">
+                    <label >Email</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
-                    <label >Năm học</label>
+                    <input name='diachi' type="text"  class="form-control" value="<?php echo $row['DiaChi']?>">
+                    <label >Địa chỉ</label>
                 </div>
 
                 
-                <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">ADD</button>
-
+                <button name="update" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">UPDATE</button>
+                
             </form>
+            
             <!-- Form -->
 
             </div>
 
         </div>
-    <div class="limiter">
-		<div class="container-table100">
-			<div class="wrap-table100">
-				<div class="table100">
-					<table>
-						<thead>
-							<tr class="table100-head">
-								<th class="lop1">STT</th>
-								<th class="lop2">Mã lớp</th>
-								<th class="lop3">Mã môn học</th>
-								<th class="lop4">Học kì</th>
-                                <th class="lop5">Năm học</th>
-                                <td class="column4"></td>
-                                <td class="column5"></td>
-								
-							</tr>
-						</thead>
-						<tbody>
-								<tr class="rowkhoa">
-									<td class="lop1">1</td>
-									<td class="lop2">59TH2</td>
-									<td class="lop3">CSE450</td>
-									<td class="lop4">1</td>
-									<td class="lop5">2019-2020</td>
-									<td class="column4 update_Khoa" onclick="ADD()"><i class="fas fa-pencil-alt"></i></td>
-                                    <td class="column5 remove_Khoa"><i class="fas fa-trash-alt"></i></td>
-                                </tr>	
-                                					
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
+    
     </main>
     <?php
     include ("footerLogin.php");
