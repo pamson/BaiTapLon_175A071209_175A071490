@@ -9,7 +9,9 @@ $sex=$_POST['sex'];
 $role=$_POST['role'];
 $email=$_POST['email'];
 $address=$_POST['address'];
-$query1="INSERT INTO account VALUES('$username','$password','$ConfirmPassword',NULL,'$name','$sex','$role','$email','$address')"; 
+$hashPass = password_hash($password,PASSWORD_DEFAULT);
+$hashcPass = password_hash($ConfirmPassword,PASSWORD_DEFAULT);
+$query1="INSERT INTO account VALUES('$username','$hashPass','$hashcPass',NULL,'$name','$sex','$role','$email','$address')"; 
 if (mysqli_query($connect, $query1)) {
     header("location:../TrangSauDangNhap/RoleQTAccount.php");
 } else {

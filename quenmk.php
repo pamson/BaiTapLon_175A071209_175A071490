@@ -35,10 +35,13 @@
   </nav>
   </header>
   <div class="container" style="margin-top:50px; ">  
-  
+  <div class="form-group" style="margin-left:300px">
+      <label for="email">Tài Khoản:</label>
+      <input type="password" class="form-control" id="p.pw" placeholder="Enter Email" name="p.pw" style="width:500px">
+    </div>
     <div class="form-group" style="margin-left:300px">
       <label for="email">New Password:</label>
-      <input type="password" class="form-control" id="p.pw" placeholder="Enter Past Password" name="p.pw" style="width:500px">
+      <input type="password" class="form-control" id="p.pw" placeholder="Enter New Password" name="p.pw" style="width:500px">
     </div>
     <div class="form-group" style="margin-left:300px">
       <label for="pwd">Confirm Password:</label>

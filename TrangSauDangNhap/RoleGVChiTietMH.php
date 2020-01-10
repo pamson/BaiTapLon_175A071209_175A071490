@@ -79,27 +79,27 @@ include ("leftBody.php");
         <div class="card-body px-lg-5">
 
             <!-- Form -->
-            <form class="text-center" style="color: #757575;" action="#!">
+            <form class="text-center" style="color: #757575;" action="addctmh.php" method='post'>
 
                
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='malop' type="text" class="form-control">
                     <label >Mã lớp</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name='mamh' type="text"  class="form-control">
                     <label >Mã môn học</label>
                 </div>
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='hk' type="text" class="form-control">
                     <label >Học kì</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name= 'namhoc' type="text"  class="form-control">
                     <label >Năm học</label>
                 </div>
 
@@ -130,15 +130,30 @@ include ("leftBody.php");
 							</tr>
 						</thead>
 						<tbody>
-								<tr class="rowkhoa">
-									<td class="lop1">1</td>
-									<td class="lop2">59TH2</td>
-									<td class="lop3">CSE450</td>
-									<td class="lop4">1</td>
-									<td class="lop5">2019-2020</td>
-									<td class="column4 update_Khoa" onclick="ADD()"><i class="fas fa-pencil-alt"></i></td>
-                                    <td class="column5 remove_Khoa"><i class="fas fa-trash-alt"></i></td>
-                                </tr>	
+                        <?php
+                        
+                        $query="Select * from ctmonhoc";
+                        $result=  mysqli_query($connect,$query);
+                        if(mysqli_num_rows($result)>0){
+                            $i=0;
+                            while($r=mysqli_fetch_assoc($result)){
+                                $i ++;
+                                $malop=$r['MaLop'];
+                                $mamh=$r['MaMH'];
+                                $hk=$r['HK'];
+                                $namhoc=$r['NamHoc'];
+                                echo "<tr>";
+                                echo "<td>$i</td>";
+                                echo "<td>$malop</td>";
+                                echo "<td>$maMH</td>";
+                                echo "<td>$hk</td>";
+                                echo "<td>$namhoc</td>";
+                                echo "<td name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updatechitietmh.php?id=$malop'><i class='fas fa-pencil-alt'></i></a></td>";
+                                echo "<td  class='lop5 remove_Khoa'><a href='../TrangSauDangNhap/deletectmh.php?id=$malop'><i class='fas fa-trash-alt'></i></a></td>";
+                            }
+                        }
+                        ?>
+               
                                 					
 						</tbody>
 					</table>
