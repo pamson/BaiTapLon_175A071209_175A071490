@@ -73,10 +73,7 @@ include ("leftBody.php");
                     <input name='password' type="text"  class="form-control" value="<?php echo $password?>">
                     <label >Password</label>
                 </div>
-                <div class="md-form mt-3">
-                    <input name='confirmpassword' type="text" class="form-control" value="<?php echo $ConfirmPassword?>">
-                    <label >Confirm Password</label>
-                </div>
+                
 
                 
                 

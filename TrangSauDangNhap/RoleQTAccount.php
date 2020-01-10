@@ -67,10 +67,7 @@ include ("leftBody.php");
                     <input name='password' type="text"  class="form-control">
                     <label >Password</label>
                 </div>
-                <div class="md-form mt-3">
-                    <input name='confirmpassword' type="text" class="form-control">
-                    <label >Confirm Password</label>
-                </div>
+                
 
                 
                 
@@ -117,7 +114,7 @@ include ("leftBody.php");
 								<th class="Diem1">STT</th>
 								<th class="Diem2">Username</th>
 								<th class="Diem3">Password</th>
-								<th class="Diem4">Confirm Password</th>
+								
                                 <th class="Diem5">Verified</th>
                                 <th class="Diem6">Name</th>
                                 <th class="Use7">Sex</th>
@@ -141,7 +138,7 @@ include ("leftBody.php");
                                     $i ++;
                                     $username=$r['UserName'];
                                     $password=$r['PassWord'];
-                                    $ConfirmPassword=$r['ConfirmPassword'];
+                                    
                                     $verified=$r['verified'];
                                     $name=$r['Name'];
                                     $sex=$r['Sex'];
@@ -153,7 +150,7 @@ include ("leftBody.php");
                                     echo "<td class='Diem1'>$i</td>";
                                     echo "<td class='Diem2'>$username</td>";
                                     echo "<td class='Diem3'>$password</td>";
-                                    echo "<td class='Diem4'>$ConfirmPassword</td>";
+                                    
                                     echo "<td class='Diem5'>$verified</td>";
                                     echo "<td class='Diem6'>$name</td>";
                                     echo "<td class='Diem7'>$sex</td>";
