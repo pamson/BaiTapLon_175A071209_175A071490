@@ -1,10 +1,12 @@
 <?php 
 
           include ("../connect.php");
+          $password=$_POST['password'];
+          $hashPass = password_hash($password,PASSWORD_DEFAULT);
          if(isset($_POST['username']) && isset($_POST['password'])  && isset($_POST['name']) && isset($_POST['sex']) && isset($_POST['role']) && isset($_POST['email']) && isset($_POST['address']) )
          {
                         
-           $update = "UPDATE account SET UserName = '".$_POST['username']."', PassWord = '".$_POST['password']."', Name = '".$_POST['name']."',Sex = '".$_POST['sex']."', Role = '".$_POST['role']."', Email = '".$_POST['email']."',Address = '".$_POST['address']."' WHERE UserName ='".$_GET['id']."' ";
+           $update = "UPDATE account SET UserName = '".$_POST['username']."', PassWord = '".$hashPass."', Name = '".$_POST['name']."',Sex = '".$_POST['sex']."', Role = '".$_POST['role']."', Email = '".$_POST['email']."',Address = '".$_POST['address']."' WHERE UserName ='".$_GET['id']."' ";
               
 
                  if(empty($_POST['username']) || empty($_POST['password'])  || empty($_POST['name']) && empty($_POST['sex']) || empty($_POST['role']) || empty($_POST['email']) || empty($_POST['address']) )
