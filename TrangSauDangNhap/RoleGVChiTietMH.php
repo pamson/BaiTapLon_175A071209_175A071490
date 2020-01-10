@@ -31,7 +31,7 @@ include ("leftBody.php");
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="RoleGVMonHoc.php">
+                        <a class="nav-link" href="RoleGVMonHoc.php?class=">
                         <i class="fas fa-book"></i>
                             <p>Môn học</p>
                         </a>

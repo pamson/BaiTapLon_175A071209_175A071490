@@ -31,7 +31,7 @@ include ("leftBody.php");
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="RoleGVMonHoc.php">
+                        <a class="nav-link" href="RoleGVMonHoc.php?class=">
                         <i class="fas fa-book"></i>
                             <p>Môn học</p>
                         </a>
@@ -63,9 +63,30 @@ include ("leftBody.php");
     <?php include ("HoSoGV.php")?>
     <!-- Search form -->
     <form class="form-inline md-form form-sm mt-0 search">
-         <i class="fas fa-search" aria-hidden="true"></i>
-         <input class="form-control form-control-sm ml-3 w-75 input_search" type="text" placeholder="Search"
-             aria-label="Search">
+         <!--Dropdown primary-->
+        <div class="dropdown">
+
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">Danh môn học</button>
+        <!--Menu-->
+        <div class="dropdown-menu dropdown-primary">
+        <?php
+            $sql2 = "SELECT * FROM monhoc ";
+            $result1 = mysqli_query($connect,$sql2);
+            if(mysqli_num_rows($result1)>0)
+            {
+                while($row = mysqli_fetch_assoc($result1))
+                { 
+        ?> 
+        <a class="dropdown-item" id="class" href="../TrangSauDangNhap/RoleGVMonHoc.php?class=<?php echo $row['MaMH']?>" name="class" ><?php echo $row["MaMH"]?></a>
+        <?php
+                }
+            }
+            
+        ?>
+        </div>
+        </div>
+        <!--/Dropdown primary-->
     </form>
     <div class="limiter">
 		<div class="container-table100">
@@ -85,8 +106,17 @@ include ("leftBody.php");
 						<tbody>
                         <?php
                         
-                        $query="Select * from monhoc";
-                        $result=  mysqli_query($connect,$query);
+                        $sql = "SELECT * FROM MonHoc WHERE MaMH = '".$_GET['class']."'";
+                        $sql1 = "SELECT * FROM MonHoc";
+                        if(isset($_GET["class"]))
+                        {
+                            $result = mysqli_query($connect,$sql);
+                        }
+                        if(empty($_GET["class"]))
+                        {
+                            $result = mysqli_query($connect,$sql1);
+                        }
+                        
                         if(mysqli_num_rows($result)>0){
                             $i=0;
                             while($r=mysqli_fetch_assoc($result)){
