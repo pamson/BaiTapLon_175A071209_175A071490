@@ -145,7 +145,7 @@ include ("leftBody.php");
                                 echo "<tr>";
                                 echo "<td>$i</td>";
                                 echo "<td>$malop</td>";
-                                echo "<td>$maMH</td>";
+                                echo "<td>$mamh</td>";
                                 echo "<td>$hk</td>";
                                 echo "<td>$namhoc</td>";
                                 echo "<td name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updatechitietmh.php?id=$malop'><i class='fas fa-pencil-alt'></i></a></td>";
