@@ -79,64 +79,48 @@ include ("leftBody.php");
         <div class="card-body px-lg-5">
 
             <!-- Form -->
-            <form class="text-center" style="color: #757575;" action="#!">
-
-               
-                <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+            <form class="text-center" style="color: #757575;" action="addiemsv.php" method='post'>
+            
+            <div class="md-form mt-3">
+                    <input name='mamh' type="text" class="form-control">
                     <label >Mã môn học</label>
                 </div>
 
                 
-                <div class="md-form">
-                    <input type="text"  class="form-control">
-                    <label >Tên môn học</label>
-                </div>
+                
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='sotc' type="text" class="form-control">
                     <label >Số tín chỉ</label>
                 </div>
+                <div class="md-form mt-3">
+                    <input name='lanhoc' type="text" class="form-control">
+                    <label >Lần học</label>
+                </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name='lanthi' type="text"  class="form-control">
                     <label >Lần thi</label>
                 </div>
+               
+               
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
-                    <label >Đánh giá</label>
-                </div>
-
-                
-                <div class="md-form">
-                    <input type="text"  class="form-control">
-                    <label >Tên sinh viên</label>
-                </div>
-                <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='masv' type="text" class="form-control">
                     <label >Mã sinh viên</label>
                 </div>
 
                 
                 <div class="md-form">
-                    <input type="text"  class="form-control">
+                    <input name='diemqt' type="text"  class="form-control">
                     <label >Điểm quá trình</label>
                 </div>
                 <div class="md-form mt-3">
-                    <input type="text" class="form-control">
+                    <input name='diemthi' type="text" class="form-control">
                     <label >Điểm thi</label>
                 </div>
 
                 
-                <div class="md-form">
-                    <input type="text"  class="form-control">
-                    <label >Tổng kết học phần</label>
-                </div>
-                <div class="md-form mt-3">
-                    <input type="text" class="form-control">
-                    <label >Điểm chữ</label>
-                </div>
-
+                
                 
                 
                 
@@ -157,11 +141,14 @@ include ("leftBody.php");
 							<tr class="table100-head">
 								<th class="Diem1">STT</th>
 								<th class="Diem2">Mã môn học</th>
-								<th class="Diem3">Tên môn học</th>
+                                
+								
 								<th class="Diem4">Số tín chỉ</th>
+                                <th class="Diem2">Lần học</th>
+								
                                 <th class="Diem5">Lần thi</th>
                                 <th class="Diem6">Đánh giá</th>
-                                <th class="Diem7">Tên sinh viên</th>
+                               
                                 <th class="Diem8">Mã sinh viên</th>
                                 <th class="Diem9">Điểm quá trình</th>
                                 <th class="Diem10">Điểm thi</th>
@@ -173,22 +160,45 @@ include ("leftBody.php");
 							</tr>
 						</thead>
 						<tbody>
-								<tr class="rowkhoa">
-									<td class="Diem1">1</td>
-									<td class="Diem2">CSE450</td>
-									<td class="Diem3">Lập trình nâng cao</td>
-									<td class="Diem4">3</td>
-									<td class="Diem5">1</td>
-                                    <td class="Diem6">Đạt</td>
-                                    <td class="Diem7">Phạm Thế Sơn</td>
-									<td class="Diem8">175A071209</td>
-									<td class="Diem9">7.5</td>
-                                    <td class="Diem10">7.5</td>
-                                    <td class="Diem11">7.5</td>
-									<td class="Diem12">B</td>
-                                    <td class="Diem5 update_Khoa" onclick="ADD()"><i class="fas fa-pencil-alt"></i></td>
-                                    <td class="Diem5 remove_Khoa"><i class="fas fa-trash-alt"></i></td>
-                                </tr>	
+                        <?php
+                        
+                        $query="Select * from diemsv";
+                        $result=  mysqli_query($connect,$query);
+                        if(mysqli_num_rows($result)>0){
+                            $i=0;
+                            while($r=mysqli_fetch_assoc($result)){
+                                $i ++;
+                                $mamh=$r['MaMH'];
+                               
+                                $sotinchi=$r['SoTC'];
+                                $lanhoc=$r['LanHoc'];
+                                $lanthi=$r['LanThi'];
+                                 $danhgia=$r['DanhGia'];
+                               
+                                $masv=$r['MaSV'];
+                                $diemqt=$r['QuaTrinh'];
+                                $diemthi=$r['Thi'];
+                                $tkhp=$r['TKHP'];
+                                $diemchu=$r['Diemchu'];
+                                echo "<tr>";
+                                echo "<td class ='column1'>$i</td>";
+                                echo "<td class ='column2'>$mamh</td>";
+                                
+                                echo "<td class ='column4'>$sotinchi</td>";
+                                echo "<td class ='column4'>$lanhoc</td>";
+                                echo "<td class ='column5'>$lanthi</td>";
+                                echo "<td class ='column6'>$danhgia </td>";
+                              
+                                echo "<td class ='column7'>$masv</td>";
+                                echo "<td class ='column7'>$diemqt</td>";
+                                echo "<td class ='column7'>$diemthi</td>";
+                                echo "<td class ='column7'>$tkhp</td>";
+                                echo "<td class ='column7'>$diemchu</td>";
+                                echo "<td class ='column4' name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updategv.php?id=$mamh'><i class='fas fa-pencil-alt'></i></a></td>";
+                                echo "<td  class='column5 remove_Khoa'><a href='../TrangSauDangNhap/deletediemsv.php?id=$mamh'><i class='fas fa-trash-alt'></i></a></td>";
+                            }
+                        }
+                        ?>			
                                 					
 						</tbody>
 					</table>
