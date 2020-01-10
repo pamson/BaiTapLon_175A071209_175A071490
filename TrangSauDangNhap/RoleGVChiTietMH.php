@@ -148,7 +148,7 @@ include ("leftBody.php");
                                 echo "<td>$mamh</td>";
                                 echo "<td>$hk</td>";
                                 echo "<td>$namhoc</td>";
-                                echo "<td name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updatechitietmh.php?id=$malop'><i class='fas fa-pencil-alt'></i></a></td>";
+                                echo "<td name='update' class='lop5 update_Khoa' onclick='ADD()'><a href='../TrangSauDangNhap/updateRoleGVChiTietMH.php?id=$malop'><i class='fas fa-pencil-alt'></i></a></td>";
                                 echo "<td  class='lop5 remove_Khoa'><a href='../TrangSauDangNhap/deletectmh.php?id=$malop'><i class='fas fa-trash-alt'></i></a></td>";
                             }
                         }
