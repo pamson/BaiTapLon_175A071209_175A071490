@@ -15,7 +15,7 @@ $query1="INSERT INTO account VALUES('$username','$hashPass','$hashcPass',NULL,'$
 if (mysqli_query($connect, $query1)) {
     header("location:../TrangSauDangNhap/RoleQTAccount.php");
 } else {
-    echo "Lỗi: " . $query . "<br>" . mysqli_error($connect);
+    echo "Lỗi: " . $query1 . "<br>" . mysqli_error($connect);
 }
 
 ?>
